@@ -32,7 +32,7 @@ class Signup extends Component {
             <>
             
             <Navibar2/>
-            <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+            <section className="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
                 <div className='containerSignup'> 
                 <div className="col-lg-6">
                      
@@ -46,23 +46,23 @@ class Signup extends Component {
                                         />
                                     </div>
                                     <div class="row-md-2 form-group mb-3">
-                                        <input type="text" name="surname" class="form-control" id="surname" placeholder="Your Name" required
+                                        <input type="text" name="surname" class="form-control" id="surname" placeholder="Your Surname" required
                                         value={this.state.surname}
                                         onChange={this.handleOnChange} />
                                     </div>
-                                    <div class="row-md-2 form-group mt-3 mt-md-0 mb-3">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required
+                                    <div className="row-md-2 form-group mt-3 mt-md-0 mb-3">
+                                        <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" required
                                         value={this.state.email}
                                         onChange={this.handleOnChange}/>
                                     </div>
 
-                                    <div class="row-md-2 form-group mt-3 mt-md-0 mb-3">
-                                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required 
+                                    <div className="row-md-2 form-group mt-3 mt-md-0 mb-3">
+                                        <input type="password" className="form-control" name="password" id="password" placeholder="Password" required 
                                          value={this.state.password}
                                          onChange={this.handleOnChange}/>
                                     </div>
-                                    <div class="row-md-2 form-group mt-3 mt-md-0 mb-3">
-                                        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm password" required 
+                                    <div className="row-md-2 form-group mt-3 mt-md-0 mb-3">
+                                        <input type="password" className="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm password" required 
                                          
                                          value={this.state.confirmPassword}
                                          onChange={this.handleOnChange}/>
