@@ -19,7 +19,6 @@ export default function Contact() {
                 <div className="col-md-12">
                   <div className="info-box">
                     <i className="bx bx-map">
-                      {" "}
                       <Icons.Map />
                     </i>
                     <h3>Our Address</h3>
