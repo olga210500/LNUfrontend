@@ -29,17 +29,11 @@ class Signin extends Component {
     return (
       <>
         <Navibar2 />
-        <section
-          className="contact"
-          data-aos="fade-up"
-          data-aos-easing="ease-in-out"
-          data-aos-duration="500"
-        >
+        <section className="contact">
           <div className="containerSignin">
             <div className="col-lg-6">
               <form className="php-email-form" onSubmit={this.onSubmit}>
                 <h2> Sign in</h2>
-
                 <div className="row-md-2 form-group mt-3 mt-md-0 mb-3">
                   <input
                     type="email"

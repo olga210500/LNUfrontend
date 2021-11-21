@@ -28,7 +28,7 @@ export default class Home extends Component {
                   заявки натисніть кнопку розпочати.
                 </p>
 
-                <Link className="btn-get-started" to="/">
+                <Link className="btn-get-started" to="/signin">
                   Розпочати
                 </Link>
               </div>

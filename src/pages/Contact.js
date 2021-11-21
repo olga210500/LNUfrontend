@@ -98,14 +98,8 @@ export default function Contact() {
                     required
                   ></textarea>
                 </div>
-                <div className="my-3">
-                  <div className="loading">Loading</div>
-                  <div className="error-message"></div>
-                  <div className="sent-message">
-                    Your message has been sent. Thank you!
-                  </div>
-                </div>
-                <div className="text-center">
+            
+                <div className="text-center mt-3">
                   <button type="submit">Send Message</button>
                 </div>
               </form>
