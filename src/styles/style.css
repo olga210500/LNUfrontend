@@ -242,8 +242,7 @@ h6,
   justify-content: center;
   flex-direction: column;
   border-radius: 20px;
-  width: 80%;
-  
+  width: 100%;
 }
 button[type="submit"] {
   background: #68a4c4;
@@ -255,13 +254,10 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background: #8dbad2;
 }
-.header_6{
+.header_6 {
   display: flex;
-  justify-content: center;
   align-items: center;
- 
 }
-input[type='radio']{
-
+input[type="radio"] {
   transform: scale(1.3);
 }

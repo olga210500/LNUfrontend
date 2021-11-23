@@ -3,8 +3,42 @@ import Navibar2 from "../components/Navibar2";
 import "../styles/style.css";
 import { connect } from "react-redux";
 import { signUserUp } from "../actions/userActions";
-
+import InputField from "../components/InputField";
 class Signup extends Component {
+  fields = [
+    {
+      type: "text",
+      name: "name",
+      id: "name",
+      placeholder: "First name",
+    },
+    {
+      type: "text",
+      name: "surname",
+      id: "surname",
+      placeholder: "Last name",
+    },
+
+    {
+      type: "email",
+      name: "email",
+      id: "email",
+      placeholder: "Your Email",
+    },
+
+    {
+      type: "password",
+      name: "password",
+      id: "password",
+      placeholder: "Password",
+    },
+    {
+      type: "password",
+      name: "confirmPassword",
+      id: "confirmPassword",
+      placeholder: "Confirm password",
+    },
+  ];
   state = {
     name: "",
     surname: "",
@@ -13,10 +47,9 @@ class Signup extends Component {
     confirmPassword: "",
   };
 
-  handleOnChange = (e) => {
-    e.persist();
+  handleOnChange = (fieldName) => (fieldValue) => {
     this.setState(() => ({
-      [e.target.name]: e.target.value,
+      [fieldName]: fieldValue,
     }));
   };
 
@@ -31,75 +64,22 @@ class Signup extends Component {
         <script>AOS.init();</script>
 
         <Navibar2 />
-        <section
-          className="contact"
-        
-        >
+        <section className="contact">
           <div className="containerSignup">
             <div className="col-lg-6">
               <form className="php-email-form" onSubmit={this.onSubmit}>
                 <h2> Register</h2>
-
                 <div className="row-md-2 form-group mb-3">
-                  <input
-                    type="text"
-                    name="name"
-                    className="form-control"
-                    id="name"
-                    placeholder="Your Name"
-                    required
-                    value={this.state.name}
-                    onChange={this.handleOnChange}
-                  />
-                </div>
-                <div className="row-md-2 form-group mb-3">
-                  <input
-                    type="text"
-                    name="surname"
-                    className="form-control"
-                    id="surname"
-                    placeholder="Your Name"
-                    required
-                    value={this.state.surname}
-                    onChange={this.handleOnChange}
-                  />
-                </div>
-                <div className="row-md-2 form-group mt-3 mt-md-0 mb-3">
-                  <input
-                    type="email"
-                    className="form-control"
-                    name="email"
-                    id="email"
-                    placeholder="Your Email"
-                    required
-                    value={this.state.email}
-                    onChange={this.handleOnChange}
-                  />
-                </div>
-
-                <div className="row-md-2 form-group mt-3 mt-md-0 mb-3">
-                  <input
-                    type="password"
-                    className="form-control"
-                    name="password"
-                    id="password"
-                    placeholder="Password"
-                    required
-                    value={this.state.password}
-                    onChange={this.handleOnChange}
-                  />
-                </div>
-                <div className="row-md-2 form-group mt-3 mt-md-0 mb-3">
-                  <input
-                    type="password"
-                    className="form-control"
-                    name="confirmPassword"
-                    id="confirmPassword"
-                    placeholder="Confirm password"
-                    required
-                    value={this.state.confirmPassword}
-                    onChange={this.handleOnChange}
-                  />
+                  {this.fields.map(({ type, name, id, placeholder }) => (
+                    <InputField
+                      type={type}
+                      name={name}
+                      id={id}
+                      placeholder={placeholder}
+                      value={this.state[name]}
+                      onChange={this.handleOnChange(name)}
+                    />
+                  ))}
                 </div>
 
                 <div className="text-center">
@@ -118,5 +98,4 @@ const mapDispatchToProps = (dispatch) => {
     signUserUp: (userInfo) => dispatch(signUserUp(userInfo)),
   };
 };
-
 export default connect(null, mapDispatchToProps)(Signup);
