@@ -4,7 +4,8 @@ import "../styles/style.css";
 import { connect } from "react-redux";
 import { signUserUp } from "../actions/userActions";
 
-class Signup extends Component {
+
+class Application extends Component {
   state = {
     fullName: "",
 
@@ -36,7 +37,8 @@ class Signup extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.signUserUp(this.state);
+    // this.props.signUserUp(this.state);
+    console.log(this.state)
   };
 
   render() {
@@ -48,8 +50,10 @@ class Signup extends Component {
             <div className="titleContainer ">
               <h1> Заявка на відрядження</h1>
             </div>
+            
             <div className="applicationForm">
               <form id="formApp" onSubmit={this.onSubmit}>
+               
                 <div className="col-md-5 mb-3 php-email-form columnApp">
                   <h6>Прізвище, ім'я, по батькові (в родовому відмінку)</h6>
 
@@ -74,6 +78,7 @@ class Signup extends Component {
                     required
                   />
                 </div>
+
                 <div className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp">
                   <h6>
                     Вкажіть відділ та посаду за сумісництвом (за наявності)
@@ -95,7 +100,7 @@ class Signup extends Component {
                     </label>
                   </div>
                   <div className="form-check">
-                    <input type="radio" name="typeTrip" id=""  />
+                    <input type="radio" name="typeTrip" id="" />
                     <label className="form-check-label px-2" htmlFor="typeTrip">
                       <h6> Відрядження за кордон </h6>
                     </label>
@@ -125,65 +130,63 @@ class Signup extends Component {
                     </div>
                   </div>
                   <div className="form-check">
-                   
-                    <div> 
+                    <div className='header_6'> 
                       <input type="radio" name="purposeTrip" id="" />
                       <label
                         className="form-check-label px-2"
-                        htmlFor="purposeTrip">
+                        htmlFor="purposeTrip"
+                      >
                         <h6> проходження стажування </h6>
                       </label>
                     </div>
                   </div>
                   <div className="form-check">
-                   <div> 
-                     <input type="radio" name="purposeTrip" id="" />
-                     <label
-                       className="form-check-label px-2"
-                       htmlFor="purposeTrip">
-                       <h6> для викладу лекційного курсу </h6>
-                     </label>
-                   </div>
-                 </div>
-                 <div className="form-check">
-                   <div> 
-                     <input type="radio" name="purposeTrip" id="" />
-                     <label
-                       className="form-check-label px-2"
-                       htmlFor="purposeTrip">
-                       <h6> участь в проектній зустрічі </h6>
-                     </label>
-                   </div>
-                 </div>
-                 <div className="form-check">
-                   <div> 
-                     <input type="radio" name="purposeTrip" id="" />
-                     <label
-                       className="form-check-label px-2"
-                       htmlFor="purposeTrip">
-                       <h6> участь у тренінгу </h6>
-                     </label>
-                   </div>
-                 </div>
-                  
-                 <div className="form-check">
-                   <div> 
-                     <input type="radio" name="purposeTrip" id="" />
-                     <label
-                       className="form-check-label px-2"
-                       htmlFor="purposeTrip">
-                       <h6> інше </h6>
-                     </label>
-                     <input type='text' name='purposeTrip' id=''></input>
-                   </div>
-                 </div>
+                    <div className='header_6'>
+                      <input type="radio" name="purposeTrip" id="" />
+                      <label
+                        className="form-check-label px-2"
+                        htmlFor="purposeTrip"
+                      >
+                        <h6> для викладу лекційного курсу </h6>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="form-check">
+                    <div className='header_6'>
+                      <input type="radio" name="purposeTrip" id="" />
+                      <label
+                        className="form-check-label px-2"
+                        htmlFor="purposeTrip"
+                      >
+                        <h6> участь в проектній зустрічі </h6>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="form-check">
+                    <div className='header_6'>
+                      <input type="radio" name="purposeTrip" id="" />
+                      <label
+                        className="form-check-label px-2"
+                        htmlFor="purposeTrip"
+                      >
+                        <h6> участь у тренінгу </h6>
+                      </label>
+                    </div>
+                  </div>
 
-
-
-
-
+                  <div className="form-check">
+                    <div >
+                      <input type="radio" name="purposeTrip" id="" />
+                      <label
+                        className="form-check-label px-2"
+                        htmlFor="purposeTrip"
+                      >
+                        <h6> інше </h6>
+                      </label>
+                      <input type="text" name="purposeTrip" id=""></input>
+                    </div>
+                  </div>
                 </div>
-                
 
                 <div className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp">
                   <h6></h6>
@@ -196,18 +199,6 @@ class Signup extends Component {
                     required
                   />
                 </div>
-
-                {/* <div className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp">
-                    <h6></h6>
-                  <input
-                    type="text"
-                    className="form-control"
-                    name=""
-                    id=""
-                    placeholder="Your Email"
-                    required
-                  />
-                </div> */}
                 <div className="text-center ">
                   <button type="submit" className="rounded">
                     Надіслати
@@ -227,4 +218,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(null, mapDispatchToProps)(Application);

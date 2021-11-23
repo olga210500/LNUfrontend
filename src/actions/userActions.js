@@ -1,11 +1,11 @@
 
 const setUser = (payload) => ({ type: "SET_USER", payload})
-
+const URL='https://localhost:5001/api'
 export const logUserOut = () => ({type: "LOG_OUT"})
 
 
 export const fetchUser = (userInfo) => dispatch => {
-    fetch('https://localhost:5001/api/Login/signin', {
+    fetch(`${URL}/Login/signin`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -13,7 +13,7 @@ export const fetchUser = (userInfo) => dispatch => {
         },
         body: JSON.stringify(userInfo)
     })
-    .then(res => res.json())
+    .then(res => res.json() )
     .then(data => {
        
         localStorage.setItem("token", data.token)
@@ -22,7 +22,7 @@ export const fetchUser = (userInfo) => dispatch => {
 }
 
 export const signUserUp = (userInfo) => dispatch => {
-    fetch(`https://localhost:5001/api/Auth/signup`, {
+    fetch(`${URL}/Auth/signup`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export const logOut = () => {
     return dispatch => {
       const token = localStorage.token;
       if (token) {
-        return fetch("https://localhost:5001/api​/Login​/logout", {
+        return fetch(`${URL}​/Login​/logout`, {
           method: "GET",
           headers: {
             'Content-Type': 'application/json',

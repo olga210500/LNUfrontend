@@ -46,7 +46,7 @@ class Signup extends Component {
                     name="name"
                     className="form-control"
                     id="name"
-                    placeholder="Your Name"
+                    placeholder="First name"
                     required
                     value={this.state.name}
                     onChange={this.handleOnChange}
@@ -58,7 +58,7 @@ class Signup extends Component {
                     name="surname"
                     className="form-control"
                     id="surname"
-                    placeholder="Your Name"
+                    placeholder="Last name"
                     required
                     value={this.state.surname}
                     onChange={this.handleOnChange}
