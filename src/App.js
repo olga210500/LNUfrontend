@@ -7,11 +7,33 @@ import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import Application from './pages/Application';
 function App() {
+  const fields = [
+    {
+      path:'/about',
+      component:Application
+
+                      
+    },
+    {
+      path:'/contact',
+      component:Contact
+      
+    },
+    {
+      path:'/signup',
+      component:Signup
+    },
+    {
+      path:'/signin',
+      component:Signin
+    }
+  
+  ];
   
   return (
       <>  
     
-      
+          
     
 
           
@@ -20,10 +42,9 @@ function App() {
            <Switch>
 
             <Route exact path='/' component={Home} />
-            <Route  path='/about' component={Application} />
-            <Route path='/contact' component={Contact}/>
-            <Route path='/signup' component={Signup}/>
-            <Route path='/signin' component={Signin}/>
+            {fields.map(({ path,component}) => (
+                    <Route path={path} component={component}/>
+                  ))}
             </Switch>
    
 
