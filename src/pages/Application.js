@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { signUserUp } from "../actions/userActions";
 
 
+
+
 class Application extends Component {
   state = {
     fullName: "",

@@ -29,7 +29,7 @@ export const signUserUp = (userInfo) => (dispatch) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      localStorage.setItem("token", data.token);
+   
       dispatch(setUser(data.user));
     });
 };
@@ -45,10 +45,11 @@ export const logOut = () => {
           Accept: "application/json",
         },
       })
-        .then((resp) => resp.json())
         .then((data) => {
-          localStorage.removeItem("token");
+          if(data.ok){
+          localStorage.removeItem("token");}
         });
+
     }
   };
 };
