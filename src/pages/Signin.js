@@ -8,21 +8,17 @@ import { fetchUser } from "../actions/userActions";
 class Signin extends Component {
   fields = [
     {
-      type:"email",
-      name:"email",
-      id:"email",
-      placeholder:"Your Email",
-
-                      
+      type: "email",
+      name: "email",
+      id: "email",
+      placeholder: "Your Email",
     },
     {
-      type:"password",
-      name:"password",
-      id:"password",
-      placeholder:"Password"
-      
+      type: "password",
+      name: "password",
+      id: "password",
+      placeholder: "Password",
     },
-  
   ];
   state = {
     email: "",
@@ -30,7 +26,7 @@ class Signin extends Component {
     rememberMe: true,
   };
 
-  handleOnChange = fieldName => fieldValue  => {
+  handleOnChange = (fieldName) => (fieldValue) => {
     this.setState(() => ({
       [fieldName]: fieldValue,
     }));
@@ -52,15 +48,17 @@ class Signin extends Component {
               <form className="php-email-form" onSubmit={this.onSubmit}>
                 <h2> Sign in</h2>
                 <div className="row-md-2 form-group mt-3 mt-md-0 mb-3">
-                {this.fields.map(({ type, name, id,placeholder}) => (
-                    <InputField
-                      type={type}
-                      name={name}
-                      id={id}
-                      placeholder={placeholder}
-                      value={this.state[name]}
-                      onChange={this.handleOnChange(name)}
-                    />
+                  {this.fields.map(({ type, name, id, placeholder }) => (
+                    <div className="mb-3">
+                      <InputField
+                        type={type}
+                        name={name}
+                        id={id}
+                        placeholder={placeholder}
+                        value={this.state[name]}
+                        onChange={this.handleOnChange(name)}
+                      />
+                    </div>
                   ))}
                 </div>
                 <div className="text-center">

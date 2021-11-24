@@ -1,7 +1,7 @@
 import '../styles/style.css'
 const InputField = ({  type, value, onChange,placeholder ,id,name}) => (
     
-      <input className="form-control mb-3"
+      <input className="form-control"
         name={name}
         type={type}
         id={id}

@@ -71,14 +71,16 @@ class Signup extends Component {
                 <h2> Register</h2>
                 <div className="row-md-2 form-group mb-3">
                   {this.fields.map(({ type, name, id, placeholder }) => (
-                    <InputField
-                      type={type}
-                      name={name}
-                      id={id}
-                      placeholder={placeholder}
-                      value={this.state[name]}
-                      onChange={this.handleOnChange(name)}
-                    />
+                    <div className="mb-3">
+                      <InputField
+                        type={type}
+                        name={name}
+                        id={id}
+                        placeholder={placeholder}
+                        value={this.state[name]}
+                        onChange={this.handleOnChange(name)}
+                      />
+                    </div>
                   ))}
                 </div>
 
