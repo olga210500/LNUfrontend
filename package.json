@@ -20,6 +20,7 @@
     "react-scripts": "^4.0.3",
     "react-toastify": "^8.1.0",
     "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
     "redux-store": "0.0.0",
     "redux-thunk": "^2.4.0",
     "web-vitals": "^1.1.2"
@@ -47,5 +48,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "install": "^0.13.0",
+    "npm": "^8.1.4",
+    "redux-devtools-extension": "^2.13.9"
   }
 }
