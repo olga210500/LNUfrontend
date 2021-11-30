@@ -28,6 +28,11 @@ const Navibar2 = () => (
             </Nav>
           ))}
         </Nav>
+        <Nav>
+        <Nav className="pb-2">
+              <Link to='/'> Logout </Link>
+            </Nav>
+        </Nav>
       </Navbar.Collapse>
     </Container>
   </Navbar>
