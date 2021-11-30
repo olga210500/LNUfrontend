@@ -1,3 +1,5 @@
+import jwt_decode from "jwt-decode";
+
 const setUser = (payload) => ({ type: "SET_USER", payload });
 const URL = "https://localhost:5001/api";
 export const logUserOut = () => ({ type: "LOG_OUT" });
@@ -14,6 +16,7 @@ export const fetchUser = (userInfo) => (dispatch) => {
     .then((res) => res.json())
     .then((data) => {
       localStorage.setItem("token", data.token);
+      data.user = jwt_decode(data.token);
       dispatch(setUser(data.user));
     });
 };
@@ -29,7 +32,6 @@ export const signUserUp = (userInfo) => (dispatch) => {
   })
     .then((res) => res.json())
     .then((data) => {
-   
       dispatch(setUser(data.user));
     });
 };
@@ -44,12 +46,11 @@ export const logOut = () => {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      })
-        .then((data) => {
-          if(data.ok){
-          localStorage.removeItem("token");}
-        });
-
+      }).then((data) => {
+        if (data.ok) {
+          localStorage.removeItem("token");
+        }
+      });
     }
   };
 };
