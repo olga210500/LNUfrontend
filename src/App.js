@@ -1,39 +1,77 @@
-import './App.css';
-import Home from './pages/Home';
-import { Route,BrowserRouter ,Switch} from 'react-router-dom';
-import Contact from './pages/Contact';
-import About from './pages/About';
-import Signup from './pages/Signup';
-import Signin from './pages/Signin';
-function App() {
-  
+import "./App.css";
+import Home from "./pages/Home";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
+import { connect } from "react-redux";
+import Signin from "./pages/Signin/Signin";
+import Application from "./pages/Application";
+import Signup from "./pages/Signup/Signup";
+import InformationPage from "./pages/Signup/informationPage";
+import UserPage from "./pages/UserPage";
+import InformationLoggedIn from "./pages/errors/loggedInError";
+const App = ({ userReducer }) => {
+  const fields = [
+    {
+      path: "/about",
+      component: About,
+    },
+    {
+      path: "/contact",
+      component: Contact,
+    },
+  ];
+  const noSignedIn = [
+    {
+      path: "/signup",
+      component: Signup,
+    },
+    {
+      path: "/signin",
+      component: Signin,
+    },
+  ];
+  const signedInPages = [
+    { path: "/signin", component: InformationLoggedIn },
+    {
+      path: "/application",
+      component: Application,
+    },
+    {
+      path: "/userPage",
+      component: UserPage,
+    },
+    {
+      path: "/signup",
+      component: InformationPage,
+    },
+  ];
+
   return (
-      <>  
-    
-      
-    
-
-          
-          <BrowserRouter>
-         
-           <Switch>
-
-            <Route exact path='/' component={Home} />
-            <Route  path='/about' component={About} />
-            <Route path='/contact' component={Contact}/>
-            <Route path='/signup' component={Signup}/>
-            <Route path='/signin' component={Signin}/>
-            </Switch>
-   
-
-
-          </BrowserRouter>
-      
-    
+    <>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          {fields.map(({ path, component }) => (
+            <Route path={path} component={component} />
+          ))}
+          {!userReducer.loggedIn
+            ? noSignedIn.map(({ path, component }) => (
+                <Route path={path} component={component} />
+              ))
+            : signedInPages.map(({ path, component }) => (
+                <Route path={path} component={component} />
+              ))}
+        </Switch>
+      </BrowserRouter>
     </>
-    
-        
   );
-}
+};
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    userReducer: state.userReducer,
+  };
+};
+
+export default connect(mapStateToProps)(App);

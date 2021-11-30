@@ -1,33 +1,73 @@
-import React from 'react'
-import {Container, Nav, Navbar} from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
+import "../styles/style.css";
+import { connect } from "react-redux";
+import Logout from "./Logout";
 
-import '../styles/style.css'
+const params = [
+  {
+    to: "/",
+    name: "Home",
+  },
+  {
+    to: "/about",
+    name: "About",
+  },
+  {
+    to: "/contact",
+    name: "Contact",
+  },
+];
+const paramps2 = [
+  { to: "/signin", name: "Sign in" },
+  { to: "/signup", name: "Sign up" },
+];
 
-
-export default function Navibar() {
-    return (
-        <Navbar collapseOnSelect expand='lg' variant="dark" id='header'>
-        <Container>
-        <Navbar.Brand className='logo'>LNUbiz</Navbar.Brand>
-        <Navbar.Toggle aria-controls='responsive-navbar-nav'/>
-        <Navbar.Collapse id='responsive-navbar-nav' >
+const Navibar = ({ userReducer }) => (
+  <Navbar collapseOnSelect expand="lg" variant="dark" id="header">
+    <Container>
+      <Navbar.Brand className="logo pb-2">LNUbiz</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-        <Nav><Link to='/'> Home </Link></Nav>
-        <Nav><Link to='/about'> About </Link></Nav>
-        <Nav><Link to='/contact'> Contact </Link></Nav>
+          <Nav className="me-auto">
+            {params.map(({ to, name }) => (
+              <Nav
+                className="pb-2"
+                key={Math.random().toString(36).substr(2, 9)}
+              >
+                <Link key={Math.random().toString(36).substr(2, 9) + 1} to={to}>
+                  {" "}
+                  {name}{" "}
+                </Link>
+              </Nav>
+            ))}
+          </Nav>
         </Nav>
-        <Nav >
-         <Nav><Link to='/signin'> Sign in </Link></Nav>
-         <Nav><Link to='/signup'> Sign up </Link></Nav>
 
-       
-      </Nav>
+        <Nav>
+          <Nav className="me-auto">
+            {!userReducer.loggedIn ? (
+              paramps2.map(({ to, name }) => (
+                <Nav className="pb-2">
+                  <Link to={to}> {name} </Link>
+                </Nav>
+              ))
+            ) : (
+              <Logout />
+            )}
+          </Nav>
+        </Nav>
       </Navbar.Collapse>
-        </Container>
-      </Navbar>
-            
+    </Container>
+  </Navbar>
+);
+const mapStateToProps = (state) => {
+  return {
+    userReducer: state.userReducer,
+  };
+};
 
-    )
-}
+export default connect(mapStateToProps)(Navibar);
