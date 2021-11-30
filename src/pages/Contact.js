@@ -2,7 +2,9 @@ import React from "react";
 import Navibar from "../components/Navibar";
 import "../styles/style.css";
 import * as Icons from "react-bootstrap-icons";
-export default function Contact() {
+import SubmitButton from "../components/submitButton";
+
+const Contact = () => {
   return (
     <>
       <Navibar />
@@ -89,7 +91,7 @@ export default function Contact() {
                     required
                   />
                 </div>
-                <div className="form-group mt-3">
+                <div className="form-group mt-3 mb-3">
                   <textarea
                     className="form-control"
                     name="message"
@@ -98,10 +100,7 @@ export default function Contact() {
                     required
                   ></textarea>
                 </div>
-            
-                <div className="text-center mt-3">
-                  <button type="submit">Send Message</button>
-                </div>
+                <SubmitButton title="Send Message" />
               </form>
             </div>
           </div>
@@ -119,4 +118,6 @@ export default function Contact() {
       </section>
     </>
   );
-}
+};
+
+export default Contact;
