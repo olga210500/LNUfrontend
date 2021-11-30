@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import Navibar2 from "../components/Navibar2";
-import "../styles/style.css";
+import Navibar from "../../components/Navibar";
+import "../../styles/style.css";
 import { connect } from "react-redux";
-import { signUserUp } from "../actions/userActions";
-import InputField from "../components/InputField";
+import { signUserUp } from "../../actions/userActions";
+import InputField from "../../components/InputField";
+import SubmitButton from "../../components/submitButton";
 class Signup extends Component {
   fields = [
     {
@@ -56,14 +57,14 @@ class Signup extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.signUserUp(this.state);
+    this.props.history("/informationPage");
   };
 
   render() {
     return (
       <>
         <script>AOS.init();</script>
-
-        <Navibar2 />
+        <Navibar />
         <section className="contact">
           <div className="containerSignup">
             <div className="col-lg-6">
@@ -83,10 +84,7 @@ class Signup extends Component {
                     </div>
                   ))}
                 </div>
-
-                <div className="text-center">
-                  <button type="submit">Sign up</button>
-                </div>
+                <SubmitButton title="Sign up" />
               </form>
             </div>
           </div>

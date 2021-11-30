@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import Navibar2 from "../components/Navibar2";
-import "../styles/style.css";
-import InputField from "../components/InputField";
+import Navibar from "../../components/Navibar";
+import "../../styles/style.css";
+import InputField from "../../components/InputField";
 import { connect } from "react-redux";
-import { fetchUser } from "../actions/userActions";
+import { fetchUser } from "../../actions/userActions";
+import SubmitButton from "../../components/submitButton";
 
-class Signin extends Component {
+
+class SigninComponent extends Component {
   fields = [
     {
       type: "email",
@@ -36,12 +38,14 @@ class Signin extends Component {
     e.preventDefault();
     console.log(JSON.stringify(this.state));
     this.props.fetchUser(this.state);
+    // this.props.history.push('/userpage')
   };
 
   render() {
     return (
       <>
-        <Navibar2 />
+   
+        <Navibar />
         <section className="contact">
           <div className="containerSignin">
             <div className="col-lg-6">
@@ -61,9 +65,7 @@ class Signin extends Component {
                     </div>
                   ))}
                 </div>
-                <div className="text-center">
-                  <button type="submit">Sign in</button>
-                </div>
+                <SubmitButton title="Sign in" link="/about" />
               </form>
             </div>
           </div>
@@ -78,4 +80,6 @@ const mapDispatchToProps = (dispatch) => {
     fetchUser: (userInfo) => dispatch(fetchUser(userInfo)),
   };
 };
-export default connect(null, mapDispatchToProps)(Signin);
+
+
+export default connect(null, mapDispatchToProps)(SigninComponent);
