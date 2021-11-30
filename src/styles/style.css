@@ -259,5 +259,13 @@ button[type="submit"]:hover {
   align-items: center;
 }
 input[type="radio"] {
-  transform: scale(1.3);
+  transform: scale(1.4);
+  align-items: center;
+}
+.info-box #linkContact {
+  padding: 0;
+  line-height: 24px;
+  font-size: 14px;
+  margin: 0;
+  color: #4fa6d5;
 }
