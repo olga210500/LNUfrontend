@@ -8,8 +8,9 @@ import Signin from "./pages/Signin/Signin";
 import Application from "./pages/Application";
 import Signup from "./pages/Signup/Signup";
 import InformationPage from "./pages/Signup/informationPage";
-import UserPage from "./pages/UserPage";
+import UserPage from "./pages/UserPage/UserPage";
 import InformationLoggedIn from "./pages/errors/loggedInError";
+import AdminPage from "./pages/UserPage/AdminPageComponent";
 const App = ({ userReducer }) => {
   const fields = [
     {
@@ -39,7 +40,7 @@ const App = ({ userReducer }) => {
     },
     {
       path: "/userPage",
-      component: UserPage,
+      component: AdminPage,
     },
     {
       path: "/signup",
