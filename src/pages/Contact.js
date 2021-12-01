@@ -3,8 +3,38 @@ import Navibar from "../components/Navibar";
 import "../styles/style.css";
 import * as Icons from "react-bootstrap-icons";
 import SubmitButton from "../components/submitButton";
-
+import { useState } from "react";
+import { sendQuestion } from "../actions/userActions";
 const Contact = () => {
+  const [state, setState] = useState({
+  name: "",
+  email: "",
+  phoneNumber: "",
+  feedBackDescription: ""
+})
+
+function handleOnChange(evt) {
+  evt.preventDefault()
+  const value = evt.target.value;
+  setState({
+    ...state,
+    [evt.target.name]: value
+  });
+}
+
+const onSubmit = (e) => {
+  e.preventDefault();
+  sendQuestion(state);
+  alert('Повідомленя доставлено. Очікуйте на відповідь.')
+  setState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    feedBackDescription: "",
+
+  });
+};
+
   return (
     <>
       <Navibar />
@@ -58,7 +88,7 @@ const Contact = () => {
             </div>
 
             <div className="col-lg-6">
-              <form className="php-email-form">
+              <form className="php-email-form" onSubmit={onSubmit}>
                 <div className="row">
                   <div className="col-md-6 form-group">
                     <input
@@ -67,6 +97,8 @@ const Contact = () => {
                       className="form-control"
                       id="name"
                       placeholder="Your Name"
+                      value={state.name}
+                      onChange={handleOnChange}
                       required
                     />
                   </div>
@@ -77,26 +109,36 @@ const Contact = () => {
                       name="email"
                       id="email"
                       placeholder="Your Email"
+                      value={state.email}
+                      onChange={handleOnChange}
                       required
                     />
                   </div>
                 </div>
                 <div className="form-group mt-3">
                   <input
-                    type="text"
+                    type="tel"
                     className="form-control"
-                    name="subject"
-                    id="subject"
-                    placeholder="Subject"
+                    name="phoneNumber"
+                    id="phoneNumber"
+                    placeholder="Phone number: +38 (032) 239-43-25" 
+                    minLength="13"
+                    maxLength="13"
+                    value={state.phoneNumber}
+                    onChange={handleOnChange}
                     required
                   />
                 </div>
                 <div className="form-group mt-3 mb-3">
                   <textarea
                     className="form-control"
-                    name="message"
+                    name="feedBackDescription"
+                    id="feedBackDescription"
                     rows="5"
                     placeholder="Message"
+                    value={state.feedBackDescription}
+                    // value={''}
+                    onChange={handleOnChange}
                     required
                   ></textarea>
                 </div>
