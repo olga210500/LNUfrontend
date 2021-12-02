@@ -36,11 +36,10 @@ const Navibar = ({ userReducer }) => (
             {params.map(({ to, name }) => (
               <Nav
                 className="pb-2"
-                key={Math.random().toString(36).substr(2, 9)}
+              
               >
-                <Link key={Math.random().toString(36).substr(2, 9) + 1} to={to}>
-                  {" "}
-                  {name}{" "}
+                <Link to={to}>
+                  {name}
                 </Link>
               </Nav>
             ))}

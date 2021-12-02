@@ -1,9 +1,9 @@
 import jwt_decode from "jwt-decode";
+const URL = "https://localhost:5001/api";
 
 const setUser = (payload) => ({ type: "SET_USER", payload });
-
-const URL = "https://localhost:5001/api";
 const logUserOut = () => ({ type: "LOG_OUT" });
+
 export const fetchUser = (userInfo) => (dispatch) => {
   fetch(`${URL}/Login/signin`, {
     method: "POST",
@@ -53,4 +53,19 @@ export const logOut = () => {
       });
     }
   };
+};
+
+export const sendQuestion=(questionOption)=>{
+  fetch(`${URL}/Auth/sendQuestion`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(questionOption),
+    
+  })
+  .then(console.log(questionOption))
+    .then((res) => res.json())
+   
 };
