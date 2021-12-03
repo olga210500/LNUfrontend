@@ -7,8 +7,7 @@ const InputField = ({  type, value, onChange,placeholder ,id,name}) => (
         id={id}
         value={value}
         placeholder={placeholder}
-        onChange={(e)=>{e.persist() 
-          onChange(e.target.value)}}
+        onChange={onChange}
         required
       />
     
