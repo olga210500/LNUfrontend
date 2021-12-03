@@ -8,7 +8,7 @@ import Signin from "./pages/Signin/Signin";
 import Application from "./pages/Application";
 import Signup from "./pages/Signup/Signup";
 import InformationPage from "./pages/Signup/informationPage";
-import UserPage from "./pages/UserPage/UserPage";
+// import UserPage from "./pages/UserPage/UserPage";
 import InformationLoggedIn from "./pages/errors/loggedInError";
 import AdminPage from "./pages/UserPage/AdminPageComponent";
 const App = ({ userReducer }) => {
@@ -21,6 +21,7 @@ const App = ({ userReducer }) => {
       path: "/contact",
       component: Contact,
     },
+
   ];
   const noSignedIn = [
     {
@@ -31,6 +32,11 @@ const App = ({ userReducer }) => {
       path: "/signin",
       component: Signin,
     },
+    {
+      path: "/informationPage",
+      component: InformationPage,
+    },
+    
   ];
   const signedInPages = [
     { path: "/signin", component: InformationLoggedIn },
@@ -42,10 +48,7 @@ const App = ({ userReducer }) => {
       path: "/userPage",
       component: AdminPage,
     },
-    {
-      path: "/signup",
-      component: InformationPage,
-    },
+
   ];
 
   return (
