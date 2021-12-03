@@ -1,4 +1,5 @@
 import jwt_decode from "jwt-decode";
+
 const URL = "https://localhost:5001/api";
 
 const setUser = (payload) => ({ type: "SET_USER", payload });
@@ -18,7 +19,8 @@ export const fetchUser = (userInfo) => (dispatch) => {
       localStorage.setItem("token", data.token);
       data.user = jwt_decode(data.token);
       dispatch(setUser(data.user));
-    });
+    })
+    .catch(() => alert("Неправильний логін або пароль!"));
 };
 
 export const signUserUp = (userInfo) => (dispatch) => {
@@ -30,10 +32,19 @@ export const signUserUp = (userInfo) => (dispatch) => {
     },
     body: JSON.stringify(userInfo),
   })
-    .then((res) => res.json())
-    .then((data) => {
-      dispatch(setUser(data.user));
-    });
+    .then((res) => {
+      if (res.status < 400) {
+        res.json();
+        window.location = "http://localhost:3000/informationPage";
+      } else {
+        throw new Error(
+          "Користувач з такою електронною поштою вже зареєстрований в системі!"
+        );
+      }
+      return true;
+    })
+
+    .catch((err) => alert(err));
 };
 
 export const logOut = () => {
@@ -48,14 +59,14 @@ export const logOut = () => {
         },
       }).then((data) => {
         if (data.ok) {
-          dispatch(logUserOut())
+          dispatch(logUserOut());
         }
       });
     }
   };
 };
 
-export const sendQuestion=(questionOption)=>{
+export const sendQuestion = (questionOption) => (dispatch) => {
   fetch(`${URL}/Auth/sendQuestion`, {
     method: "POST",
     headers: {
@@ -63,9 +74,7 @@ export const sendQuestion=(questionOption)=>{
       Accept: "application/json",
     },
     body: JSON.stringify(questionOption),
-    
   })
-  .then(console.log(questionOption))
-    .then((res) => res.json())
-   
+    .then(console.log(questionOption))
+    .then((res) => res.json());
 };
