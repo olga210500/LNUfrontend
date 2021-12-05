@@ -40,7 +40,7 @@ const Signup = ({ signUserUp }) => {
             <form className="php-email-form" onSubmit={onSubmit}>
               <h2> Register</h2>
               <div className="row-md-2 form-group mb-3">
-                {signUpFields.map(({ type, name, id, placeholder }) => (
+                {signUpFields.map(({ type, name, id, placeholder,required }) => (
                   <div className="mb-3">
                     <InputField
                       type={type}
@@ -49,6 +49,7 @@ const Signup = ({ signUserUp }) => {
                       placeholder={placeholder}
                       value={state[name]}
                       onChange={handleOnChange}
+                      required={required}
                     />
                   </div>
                 ))}
