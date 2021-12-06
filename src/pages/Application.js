@@ -28,26 +28,20 @@ const Application = () => {
     TripReason: "",
   });
 
-  const handleOnChange = (fieldName) => (fieldValue) => {
-  
-    setState(() => ({
-      [fieldName]: fieldValue,
-    }));
-  };
+  function handleOnChange(evt) {
+    evt.preventDefault();
+    const value = evt.target.value;
+    setState({
+      ...state,
+      [evt.target.name]: value,
+    });
+  }
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     console.log(state);
   };
-  const onChangeRadioButton = (buttonName) => (buttonValue) => {
-    setState(() => ({
-      [buttonName]: buttonValue,
-    }));
-    
-  };
-
-
   return (
     <>
       <Navibar/>
@@ -58,7 +52,7 @@ const Application = () => {
           </div>
           <div className="applicationForm">
             <form id="formApp" onSubmit={onSubmit}>
-              {fieldsForInput.map(({ title, type, name, id, placeholder }) => (
+              {fieldsForInput.map(({ title, type, name, id, placeholder,required }) => (
                 <div className="col-md-5 mb-3 php-email-form columnApp">
                   <h6>{title}</h6>
                   <InputField
@@ -67,18 +61,19 @@ const Application = () => {
                     id={id}
                     placeholder={placeholder}
                     value={state[name]}
-                    onChange={handleOnChange(name)}
+                    onChange={handleOnChange}
+                    required={required}
                   />
                 </div>
               ))}
-              {radioFileds.map(({ name, title, options }) => (
+              {radioFileds.map(({ name, title, options,type }) => (
                 <div className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp">
                   <h6>{title}</h6>
-                  <div onChange={onChangeRadioButton}>
-                    {options.map(({ label, value }) => (
+                  <div onChange={handleOnChange}>
+                    {options.map(({ label, value}) => (
                       <div className="form-check">
                         <div className="header_6">
-                          <input type="radio" name={name} value={value} />
+                          <input type={type} name={name} value={value} />
                           <label
                             className="form-check-label px-2 mt-2"
                             htmlFor={name}
@@ -91,6 +86,8 @@ const Application = () => {
                   </div>
                 </div>
               ))}
+
+               
               <SubmitButton title='Надіслати' />
             </form>
           </div>

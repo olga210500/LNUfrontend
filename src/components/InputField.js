@@ -1,5 +1,5 @@
 import '../styles/style.css'
-const InputField = ({  type, value, onChange,placeholder ,id,name}) => (
+const InputField = ({  type, value, onChange,placeholder ,id,name,required}) => (
     
       <input className="form-control"
         name={name}
@@ -7,9 +7,8 @@ const InputField = ({  type, value, onChange,placeholder ,id,name}) => (
         id={id}
         value={value}
         placeholder={placeholder}
-        onChange={(e)=>{e.persist() 
-          onChange(e.target.value)}}
-        required
+        onChange={onChange}
+        required={required}
       />
     
   );

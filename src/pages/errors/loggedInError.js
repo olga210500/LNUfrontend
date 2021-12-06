@@ -13,7 +13,7 @@ const InformationLoggedIn = () => (
           <div className="info-box">
             <h3> Ви увійшли в систему!</h3>
             <p className="parSize">
-              Ви вже увійшли в систему. Перейдіть на сторінку{" "}
+              Авторизація пройшла успішно. Перейдіть на сторінку{" "}
               <Link id="linkContact" to="/userPage">
                 користувача
               </Link>

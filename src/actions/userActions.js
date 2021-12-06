@@ -2,10 +2,12 @@ import AuthStore from "../stores/AuthStore";
 import Api from "../api/api";
 import jwt_decode from "jwt-decode";
 import store from "../store";
+
 const URL = "https://localhost:5001/api";
 
 const setUser = (payload) => ({ type: "SET_USER", payload });
 const logUserOut = () => ({ type: "LOG_OUT" });
+
 
 export const fetchUser = (userInfo) => async (dispatch) => {
   const response = await Api.post(`Login/signin`, userInfo)
@@ -15,9 +17,11 @@ export const fetchUser = (userInfo) => async (dispatch) => {
           dispatch(setUser(jwt_decode(response.data.token)))
         }
       }).catch((error) => {
+        alert("Неправильний логін або пароль!"));
         //TODO: implement errorHandler
       });
   return response;
+
 };
 
 export const signUserUp = (userInfo) => (dispatch) => {
@@ -28,8 +32,26 @@ export const signUserUp = (userInfo) => (dispatch) => {
       Accept: "application/json",
     },
     body: JSON.stringify(userInfo),
-  });
+
+  })
+    .then((res) => {
+      if (res.status < 400) {
+        res.json();
+        window.location = "http://localhost:3000/informationPage";
+      } else {
+        throw new Error(
+          "Користувач з такою електронною поштою вже зареєстрований в системі!"
+        );
+      }
+      return true;
+    })
+
+    .catch((err) => alert(err));
 };
+
+
+
+ 
 
 export const logOut = () => {
   return async (dispatch) => {
@@ -44,7 +66,7 @@ export const logOut = () => {
   };
 };
 
-export const sendQuestion=(questionOption)=>{
+export const sendQuestion = (questionOption) => (dispatch) => {
   fetch(`${URL}/Auth/sendQuestion`, {
     method: "POST",
     headers: {
@@ -52,9 +74,7 @@ export const sendQuestion=(questionOption)=>{
       Accept: "application/json",
     },
     body: JSON.stringify(questionOption),
-    
   })
-  .then(console.log(questionOption))
-    .then((res) => res.json())
-   
+    .then(console.log(questionOption))
+    .then((res) => res.json());
 };
