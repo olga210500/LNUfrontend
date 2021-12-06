@@ -1,4 +1,7 @@
 import React from "react";
+import userApi from "../../api/userApi";
+
+
 class AdminPage extends React.Component {
   constructor(props) {
     super(props);
@@ -8,23 +11,30 @@ class AdminPage extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch('https://localhost:5001/api/Admin/usersTable',
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }
-    )
-      .then(res => res.json())
-      .then(result => {
-        this.setState({
-          isLoaded: true,
-          items: result
-        });
-      });
+  async componentDidMount() {
+    const response = userApi.getCurrent();
+
+    // fetch(`${`https://localhost:5001/User/`}${decodedJwt.nameid}`,
+    // {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Accept: "application/json",
+    //   },
+    // }
+    // )
+    //   .then(res => {
+    //     const result=res.json();
+    //     console.log("sssss", result);
+    //     return result;
+    //   })
+    //   .then(result => {
+    //     console.log(result);
+    //     this.setState({
+    //       isLoaded: true,
+    //       items: result
+    //     });
+    //   });
   }
 
   render() {
