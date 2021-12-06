@@ -2,7 +2,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Contact from "./pages/Contact";
-import About from "./pages/About";
+import About from "./pages/About/About";
 import { connect } from "react-redux";
 import Signin from "./pages/Signin/Signin";
 import Application from "./pages/Application";
