@@ -25,8 +25,8 @@ const Signin = ({ fetchUser }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(JSON.stringify(state));
     fetchUser(state);
+
   };
 
   return (

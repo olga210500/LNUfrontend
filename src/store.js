@@ -1,16 +1,10 @@
 import rootReducer from "./reducer/rootReducer";
-import { applyMiddleware, createStore } from "redux";
-import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
-
-const persistConfig = {
-  key: "root",
-  storage,
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-const middleware = applyMiddleware(thunk);
-const store = createStore(persistedReducer, middleware);
-persistStore(store);
+import { createStore, applyMiddleware, compose } from 'redux';
+const createStoreWithMiddleware = compose(applyMiddleware(thunk))(createStore);
+const store = createStoreWithMiddleware(rootReducer);
+const token = localStorage.getItem('token');
+if (token) {
+    store.dispatch({ type: "SET_USER"});
+}
 export default store;
