@@ -11,7 +11,7 @@ const Application = () => {
   const [state, setState] = useState({
     fullName: "",
     Date: new Date(),
-    Status: "не підтверджена",
+    Status:0,
     FullTimePosition: "", // повна зайнятість
     PartTimePosition: "", // за сумісництвом
     IsAbroadTrip: 0,
@@ -66,7 +66,7 @@ const Application = () => {
                   />
                 </div>
               ))}
-              {radioFileds.map(({ name, title, options,type }) => (
+              {/* {radioFileds.map(({ name, title, options,type }) => (
                 <div className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp">
                   <h6>{title}</h6>
                   <div onChange={handleOnChange}>
@@ -85,7 +85,7 @@ const Application = () => {
                     ))}
                   </div>
                 </div>
-              ))}
+              ))} */}
 
                
               <SubmitButton title='Надіслати' />
