@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import Navibar from "../../components/Navibar";
 import "../../styles/style.css";
-import { connect } from "react-redux";
 import { signUserUp } from "../../actions/userActions";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/submitButton";
 import { signUpFields } from "./signUpFields";
 
-const Signup = ({ signUserUp }) => {
+const Signup = () => {
   const [state, setState] = useState({
     name: "",
     surname: "",
@@ -32,7 +31,7 @@ const Signup = ({ signUserUp }) => {
 
   return (
     <>
-      <script>AOS.init();</script>
+      
       <Navibar />
       <section className="contact">
         <div className="containerSignup">
@@ -63,9 +62,4 @@ const Signup = ({ signUserUp }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signUserUp: (userInfo) => dispatch(signUserUp(userInfo)),
-  };
-};
-export default connect(null, mapDispatchToProps)(Signup);
+export default Signup;
