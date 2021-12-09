@@ -1,7 +1,7 @@
 import AuthStore from "../stores/AuthStore";
 import Api from "../api/api";
 import jwt_decode from "jwt-decode";
-import store from "../store";;
+import store from "../store";
 
 const URL = "https://localhost:5001/api";
 const Front_URL='http://localhost:3000'
