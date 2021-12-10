@@ -12,6 +12,7 @@ const getCurrent = async () => {
     return await Api.get(`User/${decodedJwt.nameid}`)
         .then((response) => {
         console.log(response)
+        return response
     });
 };
 
