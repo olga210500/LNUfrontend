@@ -8,9 +8,10 @@ import Signin from "./pages/Signin/Signin";
 import Application from "./pages/Application";
 import Signup from "./pages/Signup/Signup";
 import InformationPage from "./pages/Signup/informationPage";
-// import UserPage from "./pages/UserPage/UserPage";
+import UserPage from "./pages/UserPage/UserPage";
 import InformationLoggedIn from "./pages/errors/loggedInError";
 import AdminPage from "./pages/UserPage/AdminPageComponent";
+import GeneralPage from "./pages/UserPage/UserGeneral";
 const App = ({ userReducer }) => {
   const fields = [
     {
@@ -24,6 +25,8 @@ const App = ({ userReducer }) => {
 
   ];
   const noSignedIn = [
+ 
+  
     {
       path: "/signup",
       component: Signup,
@@ -39,14 +42,15 @@ const App = ({ userReducer }) => {
     
   ];
   const signedInPages = [
-    { path: "/signin", component: InformationLoggedIn },
+    { path: "/signin", 
+    component: InformationLoggedIn },
     {
       path: "/application",
       component: Application,
     },
     {
       path: "/userPage",
-      component: AdminPage,
+      component: GeneralPage,
     },
 
   ];
@@ -56,16 +60,19 @@ const App = ({ userReducer }) => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
-          {fields.map(({ path, component }) => (
-            <Route path={path} component={component} />
+
+          {fields.map(({ path, component },i) => (
+            <Route key={i} path={path} component={component} />
           ))}
+
           {!userReducer.loggedIn
-            ? noSignedIn.map(({ path, component }) => (
-                <Route path={path} component={component} />
+            ? noSignedIn.map(({ path, component },i) => (
+                <Route key={i} path={path} component={component} />
               ))
-            : signedInPages.map(({ path, component }) => (
-                <Route path={path} component={component} />
+            : signedInPages.map(({ path, component },i) => (
+                <Route key={i} path={path} component={component} />
               ))}
+
         </Switch>
       </BrowserRouter>
     </>
