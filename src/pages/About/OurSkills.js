@@ -1,25 +1,25 @@
 import ProgressBar from "react-bootstrap/ProgressBar";
-import '../../styles/style.css'
+import "../../styles/style.css";
 const fields = [
   {
     variant: "info",
     now: 80.4,
-    label:'Java Script'
+    label: "Java Script",
   },
   {
     variant: "warning",
     now: 15.1,
-    label:'CSS'
+    label: "CSS",
   },
   {
     variant: "danger",
     now: 4.5,
-    label:'HTML'
+    label: "HTML",
   },
   {
     variant: "success",
     now: 100,
-    label:'C#'
+    label: "C#",
   },
 ];
 const OurSkills = () => (
@@ -28,16 +28,13 @@ const OurSkills = () => (
       <div className="container">
         <div className="section-title">
           <h2>Технології</h2>
-          <p>
-           В даному проекті використовувались такі Технології
-          </p>
+          <p>В даному проекті використовувались такі Технології</p>
         </div>
 
         <div className="skills-content">
-        {fields.map(({variant,now,label})=>(
-
-            <ProgressBar variant={variant} now={now} label={label} />
-        ))}
+          {fields.map(({ variant, now, label }, i) => (
+            <ProgressBar key={i} variant={variant} now={now} label={label} />
+          ))}
         </div>
       </div>
     </section>

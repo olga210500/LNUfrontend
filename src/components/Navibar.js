@@ -33,14 +33,9 @@ const Navibar = ({ userReducer }) => (
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
           <Nav className="me-auto">
-            {params.map(({ to, name }) => (
-              <Nav
-                className="pb-2"
-              
-              >
-                <Link to={to}>
-                  {name}
-                </Link>
+            {params.map(({ to, name }, i) => (
+              <Nav className="pb-2" key={i}>
+                <Link to={to}>{name}</Link>
               </Nav>
             ))}
           </Nav>

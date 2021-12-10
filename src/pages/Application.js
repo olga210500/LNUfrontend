@@ -52,10 +52,11 @@ const Application = () => {
           </div>
           <div className="applicationForm">
             <form id="formApp" onSubmit={onSubmit}>
-              {fieldsForInput.map(({ title, type, name, id, placeholder,required }) => (
+              {fieldsForInput.map(({ title, type, name, id, placeholder,required },i) => (
                 <div className="col-md-5 mb-3 php-email-form columnApp">
                   <h6>{title}</h6>
                   <InputField
+                  key={i}
                     type={type}
                     name={name}
                     id={id}
@@ -66,15 +67,16 @@ const Application = () => {
                   />
                 </div>
               ))}
-              {/* {radioFileds.map(({ name, title, options,type }) => (
+              {radioFileds.map(({ name, title, options,type },i) => (
                 <div className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp">
                   <h6>{title}</h6>
-                  <div onChange={handleOnChange}>
-                    {options.map(({ label, value}) => (
+                  <div onChange={handleOnChange} key={i}>
+                    {options.map(({ label, value},i) => (
                       <div className="form-check">
                         <div className="header_6">
-                          <input type={type} name={name} value={value} />
+                          <input type={type} name={name} value={value} key={i} />
                           <label
+                         
                             className="form-check-label px-2 mt-2"
                             htmlFor={name}
                           >
@@ -85,7 +87,7 @@ const Application = () => {
                     ))}
                   </div>
                 </div>
-              ))} */}
+              ))}
 
                
               <SubmitButton title='Надіслати' />
