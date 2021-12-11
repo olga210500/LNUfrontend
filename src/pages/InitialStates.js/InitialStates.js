@@ -1,8 +1,8 @@
 import AuthStore from "../../stores/AuthStore";
 import jwt_decode from "jwt-decode";
 
-let jwt = AuthStore.getToken();
-let decodedJwt = jwt_decode(jwt);
+// let jwt = AuthStore.getToken();
+// let decodedJwt = jwt_decode(jwt);
 const ApplicationInitialState={
     fullName: "",
     Status: 0,
@@ -20,7 +20,7 @@ const ApplicationInitialState={
     Transport: "", //нема в базі
     ExpensesPayment: "",
     TripReason: "",
-    UserId: `${decodedJwt.nameid}`,
+    UserId:'',
   }
 const UsersTableColumn= [
   {
