@@ -1,0 +1,3 @@
+const UserApplications=()=>{
+    return(<></>)
+}

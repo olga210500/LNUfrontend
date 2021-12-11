@@ -3,8 +3,8 @@ const radioFileds = [
       name: "IsAbroadTrip",
       title: "Вкажіть тип відрядження",
       options: [
-        { label: "Відрядження по Україні", value: 0 },
-        { label: "Відрядження за кордон", value: 1 },
+        { label: "Відрядження по Україні", value: false },
+        { label: "Відрядження за кордон", value: true },
       ],
       type:"radio"
     },

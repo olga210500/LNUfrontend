@@ -1,4 +1,4 @@
-import AuthStore from "../stores/AuthStore";
+// import AuthStore from "../stores/AuthStore";
 const defaultState = {
   loggedIn: false,
   user: {},
