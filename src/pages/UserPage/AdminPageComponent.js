@@ -1,10 +1,11 @@
-import adminActions from "../../actions/adminActions";
+
 import { useState, useEffect } from "react";
 import "../../styles/style.css";
 import { MDBDataTableV5 } from "mdbreact";
 import { Container } from "react-bootstrap";
 import Navibar from "../../components/Navibar";
 import InitialStates from "../InitialStates.js/InitialStates";
+import { getUsersTable } from "../../actions/adminAction";
 
 const AdminPage = () => {
   const [datatable, setusersInfo] = useState({
@@ -12,7 +13,7 @@ const AdminPage = () => {
     rows: [],
   });
   useEffect(() => {
-    adminActions.getUsersTable().then((res) => {
+    getUsersTable().then((res) => {
       setusersInfo({ ...datatable, rows: [res.data].flat() });
     });
   });

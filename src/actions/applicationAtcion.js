@@ -4,7 +4,7 @@ import Api from '../api/api';
 import config from '../config';
 
 export const sendApplication =async(appForm) => {
-  const response=await Api.post('BusinessTripRequest',appForm.json())
+  const response=await Api.post('BusinessTripRequest',appForm)
   .then(res=>{return res})
   return response
 

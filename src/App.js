@@ -39,7 +39,7 @@ const App = ({ userReducer }) => {
       path: "/informationPage",
       component: InformationPage,
     },
-    
+ 
   ];
   const signedInPages = [
     { path: "/signin", 
