@@ -17,7 +17,7 @@ const AdminPage = () => {
     getUsersTable().then((res) => {
       setusersInfo({ ...datatable, rows: [res.data].flat() });
     });
-  });
+  },[]);
 
   return (
     <>
