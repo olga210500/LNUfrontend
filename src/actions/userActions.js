@@ -1,10 +1,10 @@
 import AuthStore from "../stores/AuthStore";
 import Api from "../api/api";
 import jwt_decode from "jwt-decode";
-import store from "../store";;
+import store from "../store";
+import config from "../config";
 
-const URL = "https://localhost:5001/api";
-const Front_URL='http://localhost:3000'
+
 
 const setUser = (payload) => ({ type: '', payload });
 const logUserOut = () => ({ type: "LOG_OUT" });
@@ -16,7 +16,7 @@ export const fetchUser = (userInfo) => async (dispatch) => {
         if (response.data.token !== null) {
           AuthStore.setToken(response.data.token);
           dispatch(setUser(jwt_decode(response.data.token)))
-          window.location =`${Front_URL}/userPage`;
+          window.location =`${config.Front_URL}/userPage`;
         }
 
 
@@ -30,7 +30,7 @@ export const fetchUser = (userInfo) => async (dispatch) => {
 
 export const signUserUp = (userInfo)  => {
 
-  fetch(`${URL}/Auth/signup`, {
+  fetch(`${config.BASE_URL}/Auth/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export const signUserUp = (userInfo)  => {
     .then((res) => {
       if (res.status < 400) {
         res.json();
-        window.location =`${Front_URL}/informationPage`;
+        window.location =`${config.Front_URL}/informationPage`;
       } else {
         throw new Error(
           "Користувач з такою електронною поштою вже зареєстрований в системі!"
@@ -72,7 +72,7 @@ export const logOut = () => {
 };
 
 export const sendQuestion = (questionOption) => {
-  fetch(`${URL}/Auth/sendQuestion`, {
+  fetch(`${config.BASE_URL}}/Auth/sendQuestion`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

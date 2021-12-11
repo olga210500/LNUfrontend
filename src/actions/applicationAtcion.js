@@ -1,15 +1,31 @@
-const URL = "https://localhost:5001/api";
+import AuthStore from '../stores/AuthStore';
+import jwt_decode from 'jwt-decode';
+import Api from '../api/api';
+import config from '../config';
 
-export const sendApplication = (appForm) => (dispatch) => {
-    fetch(`${URL}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(appForm),
-    })
-      .then((res) => res.json())
+export const sendApplication =async(appForm) => {
+  const response=await Api.post('BusinessTripRequest',appForm)
+  .then(res=>{return res})
+  return response
+
+}
+
+
+
+
+export const getUserApplications = async () => {
+  let jwt = AuthStore.getToken();
+  let decodedJwt = jwt_decode(jwt);
+  return await Api.get(`BusinessTripRequest/${decodedJwt.nameid}`)
+      .then((response) => {
+      console.log(response)
+      return response
+  });
+};
+
+ 
    
-  };
+
   
+
+
