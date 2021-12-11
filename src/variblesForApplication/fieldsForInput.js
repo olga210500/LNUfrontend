@@ -10,53 +10,53 @@ const fieldsForInput = [
     {
       title: "Вкажіть підрозділ та посаду за основним місцем праці",
       type: "text",
-      name: "FullTimePosition",
-      id: "FullTimePosition",
+      name: "fullTimePosition",
+      id: "fullTimePosition",
       placeholder: "Ваша відповідь",
       required:'required'
     },
     {
       title: "Вкажіть відділ та посаду за сумісництвом (за наявності)",
       type: "text",
-      name: "PartTimePosition",
-      id: "PartTimePosition",
+      name: "partTimePosition",
+      id: "partTimePosition",
       placeholder: "Ваша відповідь",
     },
     {
       title: "Вкажіть місто відрядження",
       type: "text",
-      name: "City",
-      id: "City",
+      name: "city",
+      id: "city",
       placeholder: "Ваша відповідь",
       required:'required'
     },
     {
       title: "Вкажіть країну відрядження (для закордонного відрядження)",
       type: "text",
-      name: "Country",
-      id: "Country",
+      name: "country",
+      id: "country",
       placeholder: "Ваша відповідь",
     },
     {
       title:"Вкажіть дату початку відрядження",
       type: "date",
-      name: "StartDate",
-      id: "StartDate",
+      name: "startDate",
+      id: "startDate",
       required:'required'
     },
     {
       title:"Вкажіть дату завершення відрядження",
       type: "date",
-      name: "EndDate",
-      id: "EndDate",
+      name: "endDate",
+      id: "endDate",
       required:'required'
     },
     {
       title:
         "Вкажіть маршрут поїздки (для відряджень по Україні). Наприклад: Львів-Київ-Львів",
       type: "text",
-      name: "Route",
-      id: "Route",
+      name: "route",
+      id: "route",
       placeholder: "Ваша відповідь",
     },
 

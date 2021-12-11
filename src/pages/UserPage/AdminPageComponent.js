@@ -12,6 +12,7 @@ const AdminPage = () => {
     columns:InitialStates.UsersTableColumn,
     rows: [],
   });
+  
   useEffect(() => {
     getUsersTable().then((res) => {
       setusersInfo({ ...datatable, rows: [res.data].flat() });

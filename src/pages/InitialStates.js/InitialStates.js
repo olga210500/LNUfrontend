@@ -1,26 +1,24 @@
-import AuthStore from "../../stores/AuthStore";
-import jwt_decode from "jwt-decode";
 
-// let jwt = AuthStore.getToken();
-// let decodedJwt = jwt_decode(jwt);
 const ApplicationInitialState={
+    id:0,
     fullName: "",
-    Status: 0,
-    FullTimePosition: "", // повна зайнятість
-    PartTimePosition: "", // за сумісництвом
-    IsAbroadTrip: new Boolean(),
-    Purpose: "",
-    RetentionType: 1, //повернення коштів
-    City: "",
-    Country: "",
-    Institution: "", //заклад куди направляєтесь
-    StartDate: new Date(),
-    EndDate: new Date(),
-    Route: "", //маршут
-    Transport: "", //нема в базі
-    ExpensesPayment: "",
-    TripReason: "",
-    UserId:'',
+    date:new Date(),
+    status: 0,
+    fullTimePosition: "", // повна зайнятість
+    partTimePosition: "", // за сумісництвом
+    isAbroadTrip: Boolean(),
+    purpose: "hhhhh",
+    retentionType:0, //повернення коштів
+    city: "",
+    country: "",
+    institution: "hhhhh", //заклад куди направляєтесь
+    startDate: new Date(),
+    endDate: new Date(),
+    route: "", //маршут
+    transport: "hhhhh", //нема в базі
+    expensesPayment: "hhhhhhh",
+    tripReason: "hhhhhh",
+    userId:'',
   }
 const UsersTableColumn= [
   {

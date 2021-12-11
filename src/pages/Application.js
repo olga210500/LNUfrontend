@@ -5,13 +5,17 @@ import InputField from "../components/InputField";
 import fieldsForInput from "../variblesForApplication/fieldsForInput";
 import SubmitButton from "../components/submitButton";
 import radioFileds from "../variblesForApplication/radioFields";
+import AuthStore from "../stores/AuthStore";
 // import sendApplication  from "../actions/applicationAtcion.js";
+import jwt_decode from "jwt-decode";
+
 
 import InitialStates from "./InitialStates.js/InitialStates";
 import { sendApplication } from "../actions/applicationAtcion";
 
 const Application = () => {
-  
+  let jwt = AuthStore.getToken();
+  let decodedJwt = jwt_decode(jwt);
   const [state, setState] = useState(InitialStates.ApplicationInitialState);
 
   function handleOnChange(evt) {
@@ -25,10 +29,15 @@ const Application = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
+    state.userId=`${decodedJwt.nameid}`
+    state.retentionType=parseInt(state.retentionType)
+    state.isAbroadTrip=Boolean(state.isAbroadTrip)
+    
     sendApplication(state)
     alert("Вашу заявку відправлено.");
+   
     console.log(state);
+   
   };
   return (
     <>
@@ -42,7 +51,7 @@ const Application = () => {
             <form id="formApp" onSubmit={onSubmit}>
               {fieldsForInput.map(
                 ({ title, type, name, id, placeholder, required }, i) => (
-                  <div className="col-md-5 mb-3 php-email-form columnApp">
+                  <div key={i}  className="col-md-5 mb-3 php-email-form columnApp">
                     <h6>{title}</h6>
                     <InputField
                       key={i}
@@ -58,11 +67,11 @@ const Application = () => {
                 )
               )}
               {radioFileds.map(({ name, title, options, type }, i) => (
-                <div className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp">
+                <div key={i} className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp">
                   <h6>{title}</h6>
                   <div onChange={handleOnChange} key={i}>
                     {options.map(({ label, value }, i) => (
-                      <div className="form-check">
+                      <div key={i}  className="form-check">
                         <div className="header_6">
                           <input
                             type={type}

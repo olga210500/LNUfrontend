@@ -13,7 +13,7 @@ const InformationPage = () => (
           <div className="info-box">
             <h3> Вітаємо в системі LNUbiz</h3>
             <p className="parSize">
-              Для підтвердження реєстрації перевірте електроyну скриньку.
+              Для підтвердження реєстрації перевірте електронну скриньку.
               <br /> Якщо виникли питання можете {' '}
               <Link id="linkContact" to="/contact">
                 зв'язатись

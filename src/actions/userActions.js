@@ -30,7 +30,7 @@ export const fetchUser = (userInfo) => async (dispatch) => {
 
 export const signUserUp = (userInfo)  => {
 
-  fetch(`${config.BASE_URL}/Auth/signup`, {
+  fetch(`${config.BASE_URL}Auth/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -71,15 +71,9 @@ export const logOut = () => {
   };
 };
 
-export const sendQuestion = (questionOption) => {
-  fetch(`${config.BASE_URL}}/Auth/sendQuestion`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(questionOption),
-  })
-    .then(console.log(questionOption))
-    .then((res) => res.json());
-};
+
+export const sendQuestion =async (questionOption)=> {
+  const response = await Api.post(`Auth/sendQuestion`, questionOption)
+      .then((response) =>{return response})
+      return response;
+    }

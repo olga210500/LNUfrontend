@@ -3,12 +3,13 @@ import jwt_decode from 'jwt-decode';
 import Api from '../api/api';
 import config from '../config';
 
-export const sendApplication =async(appForm) => {
-  const response=await Api.post('BusinessTripRequest',appForm)
-  .then(res=>{return res})
-  return response
 
-}
+  export const sendApplication =async (appForm)=> {
+    const response = await Api.post(`Auth/sendQuestion`, appForm)
+        .then((response) =>{return response})
+        return response;
+      }
+
 
 
 

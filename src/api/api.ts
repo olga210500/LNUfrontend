@@ -65,7 +65,7 @@ const get = async (url: string, data?: any, paramsSerializer?: any): Promise<Htt
 const post = async (url: string, data?: any) => {
   const response = await axios.post(config.BASE_URL + url, data, {
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": 'application/json',
     },
   });
