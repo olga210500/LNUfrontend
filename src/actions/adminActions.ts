@@ -1,5 +1,3 @@
-import jwt_decode from "jwt-decode";
-import AuthStore from "../stores/AuthStore";
 import Api from "../api/api";
 
 const getUsersTable = async () => {
