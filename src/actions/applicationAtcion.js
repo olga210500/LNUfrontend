@@ -10,20 +10,6 @@ import config from '../config';
         return response;
       }
 
-
-
-
-
-export const getUserApplications = async () => {
-  let jwt = AuthStore.getToken();
-  let decodedJwt = jwt_decode(jwt);
-  return await Api.get(`BusinessTripRequest/${decodedJwt.nameid}`)
-      .then((response) => {
-      console.log(response)
-      return response
-  });
-};
-
  
    
 
