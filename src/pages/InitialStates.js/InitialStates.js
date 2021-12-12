@@ -60,4 +60,25 @@ const UsersTableColumn= [
     width: 150,
   },
 ]
-export default {ApplicationInitialState,UsersTableColumn}
+const ApplicationColumns=[ {
+  label: "Повне ім'я",
+  field: "FullName",
+  width: "10vh",
+  attributes: {
+    "aria-controls": "DataTable",
+    "aria-label": "FirstName",
+  },
+},
+{
+  label: "Статус заявки",
+  field: "Status",
+  width: 170,
+  sort: "disabled",
+},
+{
+  label: "Дата створення заявки",
+  field: "fatherName",
+  width: 200,
+  sort: "disabled",
+}]
+export default {ApplicationInitialState,UsersTableColumn,ApplicationColumns}
