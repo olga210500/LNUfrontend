@@ -4,6 +4,7 @@ import UserPage from "./UserPage";
 import AdminPage from "./AdminPageComponent";
 import Signin from "../Signin/Signin";
 import { connect } from "react-redux";
+import UserApplications from "../ApplicationPage.js/UserApplications";
 const GeneralPage = ({ userReducer }) => {
   if (userReducer.loggedIn) {
     let jwt = AuthStore.getToken();
@@ -13,10 +14,11 @@ const GeneralPage = ({ userReducer }) => {
         "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
       ] === "Admin"
     ) {
-      return <AdminPage />;
+      // return <AdminPage />;
+      return <UserApplications/>
     }
 
-    return <UserPage />;
+    return <UserPage/>;
   }
   return <Signin />;
 };
