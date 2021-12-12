@@ -76,4 +76,14 @@ export const sendQuestion =async (questionOption)=> {
   const response = await Api.post(`Auth/sendQuestion`, questionOption)
       .then((response) =>{return response})
       return response;
-    }
+    };
+
+export const getMyApplication=async()=>{
+  let jwt = AuthStore.getToken();
+  let decodedJwt = jwt_decode(jwt);
+  return await Api.get(`BusinessTripRequest/${decodedJwt.nameid}`)
+      .then((response) => {
+      console.log(response)
+      return response
+  });
+};
