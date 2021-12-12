@@ -1,5 +1,6 @@
 import userApi from "../../api/userApi";
 import { useState, useEffect } from "react";
+import UserApplications from "../ApplicationPage.js/UserApplications";
 
 const UserPage = () => {
   const [userInfo, setuserInfo] = useState({
@@ -15,9 +16,10 @@ const UserPage = () => {
   }, []);
 
   return (
-    <div>
-      <p> {userInfo.email}</p>
-    </div>
+    <UserApplications/>
+    // <div>
+    //   <p> {userInfo.email}</p>
+    // </div>
   );
 };
 
