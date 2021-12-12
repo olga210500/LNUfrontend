@@ -12,6 +12,9 @@ import UserPage from "./pages/UserPage/UserPage";
 import InformationLoggedIn from "./pages/errors/loggedInError";
 import AdminPage from "./pages/UserPage/AdminPageComponent";
 import GeneralPage from "./pages/UserPage/UserGeneral";
+import GeneratePdf from "./pages/ApplicationPage/GeneratePDF/GeneratePdf";
+import UserApplications from "./pages/ApplicationPage/UserApplications";
+
 const App = ({ userReducer }) => {
   const fields = [
     {
@@ -56,7 +59,15 @@ const App = ({ userReducer }) => {
       path: "/userPage",
       component: GeneralPage,
     },
-
+    {
+      path: "/generatePdf",
+      component: GeneratePdf,
+    },
+    {
+      path:'/allApplications',
+      component:UserApplications
+    }
+ 
   ];
 
   return (

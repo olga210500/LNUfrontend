@@ -7,17 +7,17 @@ const ApplicationInitialState={
     fullTimePosition: "", // повна зайнятість
     partTimePosition: "", // за сумісництвом
     isAbroadTrip: Boolean(),
-    purpose: "hhhhh",
+    purpose: "",
     retentionType:0, //повернення коштів
     city: "",
     country: "",
-    institution: "hhhhh", //заклад куди направляєтесь
+    institution: "", //заклад куди направляєтесь
     startDate: new Date(),
     endDate: new Date(),
     route: "", //маршут
-    transport: "hhhhh", //нема в базі
-    expensesPayment: "hhhhhhh",
-    tripReason: "hhhhhh",
+    transport: "", //нема в базі
+    expensesPayment: "",
+    tripReason: "",
     userId:'',
   }
 const UsersTableColumn= [
@@ -77,7 +77,7 @@ const ApplicationColumns=[ {
 },
 {
   label: "Дата створення заявки",
-  field: "fatherName",
+  field: "Date",
   width: 200,
   sort: "disabled",
 }]

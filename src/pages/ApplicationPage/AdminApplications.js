@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { getApplicationsTable } from "../../actions/adminAction";
+import InitialStates from "../InitialStates.js/InitialStates";
 
 const UsersApplicationPage=()=>{
     
@@ -15,7 +16,7 @@ const UsersApplicationPage=()=>{
 
         })
 
-    })
+    },[])
     
       return (
         <>

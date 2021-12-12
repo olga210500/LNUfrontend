@@ -1,6 +1,6 @@
 import userApi from "../../api/userApi";
 import { useState, useEffect } from "react";
-import UserApplications from "../ApplicationPage.js/UserApplications";
+import UserApplications from "../ApplicationPage/UserApplications";
 
 const UserPage = () => {
   const [userInfo, setuserInfo] = useState({

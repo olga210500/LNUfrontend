@@ -4,7 +4,7 @@ import UserPage from "./UserPage";
 import AdminPage from "./AdminPageComponent";
 import Signin from "../Signin/Signin";
 import { connect } from "react-redux";
-import UserApplications from "../ApplicationPage.js/UserApplications";
+import UserApplications from "../ApplicationPage/UserApplications";
 const GeneralPage = ({ userReducer }) => {
   if (userReducer.loggedIn) {
     let jwt = AuthStore.getToken();
