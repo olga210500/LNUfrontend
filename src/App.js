@@ -8,9 +8,13 @@ import Signin from "./pages/Signin/Signin";
 import Application from "./pages/Application";
 import Signup from "./pages/Signup/Signup";
 import InformationPage from "./pages/Signup/informationPage";
-// import UserPage from "./pages/UserPage/UserPage";
+import UserPage from "./pages/UserPage/UserPage";
 import InformationLoggedIn from "./pages/errors/loggedInError";
 import AdminPage from "./pages/UserPage/AdminPageComponent";
+import GeneralPage from "./pages/UserPage/UserGeneral";
+import GeneratePdf from "./pages/ApplicationPage/GeneratePDF/GeneratePdf";
+import UserApplications from "./pages/ApplicationPage/UserApplications";
+
 const App = ({ userReducer }) => {
   const fields = [
     {
@@ -24,6 +28,8 @@ const App = ({ userReducer }) => {
 
   ];
   const noSignedIn = [
+ 
+  
     {
       path: "/signup",
       component: Signup,
@@ -36,19 +42,32 @@ const App = ({ userReducer }) => {
       path: "/informationPage",
       component: InformationPage,
     },
+    {
+      path: "/userPage",
+      component: Signin,
+    },
     
   ];
   const signedInPages = [
-    { path: "/signin", component: InformationLoggedIn },
+    { path: "/signin", 
+    component: InformationLoggedIn },
     {
       path: "/application",
       component: Application,
     },
     {
       path: "/userPage",
-      component: AdminPage,
+      component: GeneralPage,
     },
-
+    {
+      path: "/generatePdf",
+      component: GeneratePdf,
+    },
+    {
+      path:'/allApplications',
+      component:UserApplications
+    }
+ 
   ];
 
   return (
@@ -56,16 +75,19 @@ const App = ({ userReducer }) => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
-          {fields.map(({ path, component }) => (
-            <Route path={path} component={component} />
+
+          {fields.map(({ path, component },i) => (
+            <Route key={i} path={path} component={component} />
           ))}
+
           {!userReducer.loggedIn
-            ? noSignedIn.map(({ path, component }) => (
-                <Route path={path} component={component} />
+            ? noSignedIn.map(({ path, component },i) => (
+                <Route key={i} path={path} component={component} />
               ))
-            : signedInPages.map(({ path, component }) => (
-                <Route path={path} component={component} />
+            : signedInPages.map(({ path, component },i) => (
+                <Route key={i} path={path} component={component} />
               ))}
+
         </Switch>
       </BrowserRouter>
     </>

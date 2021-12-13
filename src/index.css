@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: "Open Sans", sans-serif;
   color: #444;
-  overflow:autos;
+  overflow:auto;
 }
 
 code {

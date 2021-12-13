@@ -1,6 +1,7 @@
 import AuthStore from '../stores/AuthStore';
 import jwt_decode from 'jwt-decode';
-import Api from './api'
+import Api from './api';
+
 
 const getById = async (id: string | undefined) => {
     return await Api.get(`User/${id}`);
@@ -12,6 +13,7 @@ const getCurrent = async () => {
     return await Api.get(`User/${decodedJwt.nameid}`)
         .then((response) => {
         console.log(response)
+        return response
     });
 };
 

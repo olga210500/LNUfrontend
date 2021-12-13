@@ -1,5 +1,5 @@
 import axios, { Canceler } from "axios";
-import BASE_URL from "../config";
+import config from "../config";
 import AuthStore from '../stores/AuthStore';
 import { createBrowserHistory } from 'history';
 const CancelToken = axios.CancelToken;
@@ -54,8 +54,8 @@ axios.interceptors.response.use(
 );
 
 const get = async (url: string, data?: any, paramsSerializer?: any): Promise<HttpResponse> => {
-  console.log(BASE_URL + url, data);
-  const response = await axios.get(BASE_URL + url, {
+  console.log(config.BASE_URL + url, data);
+  const response = await axios.get(config.BASE_URL + url, {
     params: data,
     paramsSerializer: paramsSerializer
   });
@@ -63,9 +63,9 @@ const get = async (url: string, data?: any, paramsSerializer?: any): Promise<Htt
 };
 
 const post = async (url: string, data?: any) => {
-  const response = await axios.post(BASE_URL + url, data, {
+  const response = await axios.post(config.BASE_URL + url, data, {
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": 'application/json',
     },
   });
@@ -73,7 +73,7 @@ const post = async (url: string, data?: any) => {
 };
 
 const put = async (url: string, data?: any): Promise<HttpResponse> => {
-  const response = await axios.put(BASE_URL + url, data, {
+  const response = await axios.put(config.BASE_URL + url, data, {
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
@@ -83,7 +83,7 @@ const put = async (url: string, data?: any): Promise<HttpResponse> => {
 };
 
 const remove = async (url: string, data?: any, options: any = {}): Promise<HttpResponse> => {
-  const response = await axios.delete(BASE_URL + url, {
+  const response = await axios.delete(config.BASE_URL + url, {
     ...options,
     params: data,
   });

@@ -1,56 +1,42 @@
-import React from "react";
-import userApi from "../../api/userApi";
 
+import { useState, useEffect } from "react";
+import "../../styles/style.css";
+import { MDBDataTableV5 } from "mdbreact";
+import { Container } from "react-bootstrap";
+import Navibar from "../../components/Navibar";
+import InitialStates from "../InitialStates.js/InitialStates";
+import { getUsersTable } from "../../actions/adminAction";
 
-class AdminPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [],
-      isLoaded: false,
-    };
-  }
-
-  async componentDidMount() {
-    const response = userApi.getCurrent();
-
-    // fetch(`${`https://localhost:5001/User/`}${decodedJwt.nameid}`,
-    // {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //   },
-    // }
-    // )
-    //   .then(res => {
-    //     const result=res.json();
-    //     console.log("sssss", result);
-    //     return result;
-    //   })
-    //   .then(result => {
-    //     console.log(result);
-    //     this.setState({
-    //       isLoaded: true,
-    //       items: result
-    //     });
-    //   });
-  }
-
-  render() {
-    const { items } = this.state;
- 
-      return (
-        <ul>
-          {items.map(item => (
-            <li key={item.id}>
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-            </li>
-          ))}
-        </ul>
-      );
-    }
+const AdminPage = () => {
+  const [datatable, setusersInfo] = useState({
+    columns:InitialStates.UsersTableColumn,
+    rows: [],
+  });
   
-}
+  useEffect(() => {
+    getUsersTable().then((res) => {
+      setusersInfo({ ...datatable, rows: [res.data].flat() });
+    });
+  },[]);
+
+  return (
+    <>
+      <Navibar />
+      <div className="table">
+        <Container>
+          <MDBDataTableV5
+            hover
+            responsive
+            entriesOptions={[5, 20, 25]}
+            entries={5}
+            pagesAmount={4}
+            data={datatable}
+            materialSearch
+          />
+        </Container>
+      </div>
+    </>
+  );
+};
+
 export default AdminPage;

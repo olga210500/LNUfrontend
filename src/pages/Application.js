@@ -5,28 +5,18 @@ import InputField from "../components/InputField";
 import fieldsForInput from "../variblesForApplication/fieldsForInput";
 import SubmitButton from "../components/submitButton";
 import radioFileds from "../variblesForApplication/radioFields";
+import AuthStore from "../stores/AuthStore";
+// import sendApplication  from "../actions/applicationAtcion.js";
+import jwt_decode from "jwt-decode";
 
+
+import InitialStates from "./InitialStates.js/InitialStates";
+import { sendApplication } from "../actions/applicationAtcion";
 
 const Application = () => {
-  const [state, setState] = useState({
-    fullName: "",
-    Date: new Date(),
-    Status:0,
-    FullTimePosition: "", // повна зайнятість
-    PartTimePosition: "", // за сумісництвом
-    IsAbroadTrip: 0,
-    Purpose: "",
-    RetentionType: 1, //повернення коштів
-    City: "",
-    Country: "",
-    Institution: "", //заклад куди направляєтесь
-    StartDate: new Date(),
-    EndDate: new Date(),
-    Route: "", //маршут
-    Transport: "", //нема в базі
-    ExpensesPayment: "",
-    TripReason: "",
-  });
+  let jwt = AuthStore.getToken();
+  let decodedJwt = jwt_decode(jwt);
+  const [state, setState] = useState(InitialStates.ApplicationInitialState);
 
   function handleOnChange(evt) {
     evt.preventDefault();
@@ -39,12 +29,19 @@ const Application = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
+    state.userId=`${decodedJwt.nameid}`
+    state.retentionType=parseInt(state.retentionType)
+    state.isAbroadTrip=Boolean(state.isAbroadTrip)
+    
+    sendApplication(state)
+    alert("Вашу заявку відправлено.");
+   
     console.log(state);
+   
   };
   return (
     <>
-      <Navibar/>
+      <Navibar />
       <section className="contact">
         <div className="d-flex flex-column justify-content-center">
           <div className="titleContainer ">
@@ -52,28 +49,36 @@ const Application = () => {
           </div>
           <div className="applicationForm">
             <form id="formApp" onSubmit={onSubmit}>
-              {fieldsForInput.map(({ title, type, name, id, placeholder,required }) => (
-                <div className="col-md-5 mb-3 php-email-form columnApp">
+              {fieldsForInput.map(
+                ({ title, type, name, id, placeholder, required }, i) => (
+                  <div key={i}  className="col-md-5 mb-3 php-email-form columnApp">
+                    <h6>{title}</h6>
+                    <InputField
+                      key={i}
+                      type={type}
+                      name={name}
+                      id={id}
+                      placeholder={placeholder}
+                      value={state[name]}
+                      onChange={handleOnChange}
+                      required={required}
+                    />
+                  </div>
+                )
+              )}
+              {radioFileds.map(({ name, title, options, type }, i) => (
+                <div key={i} className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp">
                   <h6>{title}</h6>
-                  <InputField
-                    type={type}
-                    name={name}
-                    id={id}
-                    placeholder={placeholder}
-                    value={state[name]}
-                    onChange={handleOnChange}
-                    required={required}
-                  />
-                </div>
-              ))}
-              {/* {radioFileds.map(({ name, title, options,type }) => (
-                <div className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp">
-                  <h6>{title}</h6>
-                  <div onChange={handleOnChange}>
-                    {options.map(({ label, value}) => (
-                      <div className="form-check">
+                  <div onChange={handleOnChange} key={i}>
+                    {options.map(({ label, value }, i) => (
+                      <div key={i}  className="form-check">
                         <div className="header_6">
-                          <input type={type} name={name} value={value} />
+                          <input
+                            type={type}
+                            name={name}
+                            value={value}
+                            key={i}
+                          />
                           <label
                             className="form-check-label px-2 mt-2"
                             htmlFor={name}
@@ -85,10 +90,9 @@ const Application = () => {
                     ))}
                   </div>
                 </div>
-              ))} */}
+              ))}
 
-               
-              <SubmitButton title='Надіслати' />
+              <SubmitButton title="Надіслати" />
             </form>
           </div>
         </div>
@@ -97,8 +101,4 @@ const Application = () => {
   );
 };
 
-
-
-
 export default Application;
-
