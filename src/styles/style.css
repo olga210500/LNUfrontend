@@ -1,9 +1,7 @@
-
 #header {
   height: 80px;
   transition: all 0.5s;
   z-index: 997;
-  transition: all 0.5s;
   background: #1e4356;
   position: fixed;
   top: 0;
@@ -90,7 +88,7 @@
 a {
   color: #4fa6d5;
   text-decoration: none;
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
 a:hover {
@@ -154,15 +152,49 @@ a:hover,
   margin-bottom: 30px;
 }
 
+.form-control {
+  display: inline-flex;
+  padding: 0;
+  height: 44px !important;
+  margin-bottom: 10px;
+  border: 0 !important;
+  width: 100% !important;
+}
+
+.ant-input-password-icon{
+  position: absolute;
+  margin: 15px 0 0 -20px;
+}
+
+.ant-input-password input{
+  width: 100% !important;
+}
+
 .contact .php-email-form input,
 .contact .php-email-form textarea {
-  border-radius: 0;
+  border-radius: 0 !important;
   box-shadow: none;
   font-size: 14px;
+  outline: none !important;
+  text-indent: 0 !important;
+  border: 1px solid #dfe7f1 !important;
+  text-align: left;
 }
-.contact .php-email-form input::focus,
-.contact .php-email-form textarea::focus {
-  background-color: #68a4c4;
+
+.ant-form-item-explain, .ant-form-item-extra {
+  position: absolute;
+  margin: -13px 0 0 5px;
+  clear: both;
+  padding-top: 0;
+  color: red;
+  font-size: 14px;
+  line-height: 1.5715;
+  transition: color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.contact .php-email-form input:focus,
+.contact .php-email-form textarea:focus {
+  /*background-color: #dfe7f1;*/
 }
 .contact .php-email-form input {
   padding: 10px 15px;
@@ -196,9 +228,9 @@ a:hover,
 #responsive-navbar-nav {
   margin-top: 1vh;
   background-color: rgba(30, 67, 86, 0.8);
-  padding: 20px 0px;
+  padding: 20px 0;
   content: normal;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0);
+  box-shadow: 0 0 30px rgba(127, 137, 161, 0);
 }
 
 .containerSignup {
@@ -382,4 +414,66 @@ input[type="radio"] {
 }
 .table{
   margin-top: 8vh;
+}
+
+.forgot{
+  /*text-align: center;*/
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  font-size: 16px;
+  color: #6f7a85;
+  opacity: .95;
+  cursor: pointer;
+  /*font-family: "SourceSansPro";*/
+  /*margin-top: -10px;*/
+  /*margin-left:200px;*/
+}
+
+.forgot:hover{
+  text-decoration: underline;
+}
+
+.GoogleFacebookLogin{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.socialButton{
+  margin-top: 3px;
+  color: rgb(255, 255, 255) !important;
+  outline: none!important;
+  border: 0 !important;
+  border-radius: 4px !important;
+}
+
+.socialImg{
+  height: 25px;
+  width: auto;
+  margin-left: -4px;
+}
+
+#googleBtn{
+  background-color: rgb(222, 78, 59);
+  padding: 7px 7px;
+}
+
+#googleBtn:hover{
+  background-color: rgba(222, 78, 59, 0.9);
+}
+
+#imgSpanGoogle{
+  padding-right: 5px;
+  border-right: 1px solid #BB3F30;
+}
+
+.btnText{
+  margin-left: 4px;
+  font-size: small ;
+}
+
+.rememberMe span{
+  font-size: 14px;
+  padding: 1px;
 }
