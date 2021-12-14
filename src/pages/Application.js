@@ -26,17 +26,22 @@ const Application = () => {
       [evt.target.name]: value,
     });
   }
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    state.userId=`${decodedJwt.nameid}`
-    state.retentionType=parseInt(state.retentionType)
-    state.isAbroadTrip=Boolean(state.isAbroadTrip)
-    
-    sendApplication(state)
-    alert("Вашу заявку відправлено.");
+ 
+  const onSubmit =async (e) => {   
    
+    e.preventDefault(); 
+    state.retentionType=parseInt(state.retentionType,10)
+    state.isAbroadTrip=Boolean(state.isAbroadTrip)
+    state.date=new Date()
+    state.userId=`${decodedJwt.nameid}`
+    // changeState()
+    // setState({retentionType:parseInt(state.retentionType,10)})
+    // // setState(state.isAbroadTrip=Boolean(state.isAbroadTrip))
     console.log(state);
+    sendApplication(state)
+    // alert("Вашу заявку відправлено.");
+   
+    
    
   };
   return (

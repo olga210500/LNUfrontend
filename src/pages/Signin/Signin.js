@@ -51,7 +51,7 @@ const Signin = ({ fetchUser }) => {
                   </div>
                 ))}
               </div>
-              <SubmitButton title="Sign in" link="/about" />
+              <SubmitButton title="Sign in"  />
             </form>
           </div>
         </div>

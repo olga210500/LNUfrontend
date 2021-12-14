@@ -14,6 +14,7 @@ import AdminPage from "./pages/UserPage/AdminPageComponent";
 import GeneralPage from "./pages/UserPage/UserGeneral";
 import GeneratePdf from "./pages/ApplicationPage/GeneratePDF/GeneratePdf";
 import UserApplications from "./pages/ApplicationPage/UserApplications";
+import ShowApplications from "./pages/ApplicationPage/ShowApplications";
 
 const App = ({ userReducer }) => {
   const fields = [
@@ -46,6 +47,10 @@ const App = ({ userReducer }) => {
       path: "/userPage",
       component: Signin,
     },
+    {
+      path: "/generatePdf",
+      component: GeneratePdf,
+    },
     
   ];
   const signedInPages = [
@@ -59,13 +64,10 @@ const App = ({ userReducer }) => {
       path: "/userPage",
       component: GeneralPage,
     },
-    {
-      path: "/generatePdf",
-      component: GeneratePdf,
-    },
+  
     {
       path:'/allApplications',
-      component:UserApplications
+      component:ShowApplications
     }
  
   ];
