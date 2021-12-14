@@ -10,9 +10,12 @@ import {emptyInput, minLength} from "../../components/Notifications/Messages";
 import {checkEmail} from "../Signup/verification";
 import AuthStore from "../../stores/AuthStore";
 
-let user: any;
+let user;
+type Props={
+  fetchUser: (userInfo: any)=>void
+}
 
-const Signin = (fetchUser: any) => {
+const Signin = (props: Props) => {
   const [form] = Form.useForm();
   const [available, setAvailabe] = useState(true);
 
@@ -35,7 +38,7 @@ const Signin = (fetchUser: any) => {
 
   const handleSubmit = (values: any) => {
     setAvailabe(false);
-    fetchUser(values);
+    props.fetchUser(values);
     const token = AuthStore.getToken() as string;
     user = jwt(token);
     setAvailabe(true);
@@ -75,4 +78,4 @@ const Signin = (fetchUser: any) => {
   );
 };
 
-export default connect(null, { fetchUser })(Signin);
+export default connect(null, {fetchUser})(Signin);
