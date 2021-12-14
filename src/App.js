@@ -47,10 +47,7 @@ const App = ({ userReducer }) => {
       path: "/userPage",
       component: Signin,
     },
-    {
-      path: "/generatePdf",
-      component: GeneratePdf,
-    },
+    
     
   ];
   const signedInPages = [
@@ -68,8 +65,11 @@ const App = ({ userReducer }) => {
     {
       path:'/allApplications',
       component:ShowApplications
-    }
- 
+    },
+    {
+      path: `/generatePdf`,
+      component: GeneratePdf,
+    },
   ];
 
   return (

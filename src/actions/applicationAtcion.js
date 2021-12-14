@@ -13,6 +13,9 @@ import config from '../config';
  
    
 
-  
+  export const getCurrentApplication=async(requestId)=>{
+    return await Api.get(`BusinessTripRequest/${requestId}`)
+    .then((response)=>{return response})
+  }
 
 

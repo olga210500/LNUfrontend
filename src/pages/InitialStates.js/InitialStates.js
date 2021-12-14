@@ -86,7 +86,7 @@ const AdminApplicationColumns=[ {
   width: 200,
   sort: "disabled",
   // edit:<DocumentApp/>
-  // field:'generateApp'
+  field:'generateApp'
   // action:'generateApp'
 
 

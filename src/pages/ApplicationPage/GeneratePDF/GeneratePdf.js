@@ -1,9 +1,11 @@
 import ReactDOMServer from "react-dom/server";
 import * as Icons from "react-bootstrap-icons";
+import InitialStates from "../../InitialStates.js/InitialStates";
 import jsPDF from "jspdf";
 import DocumentApp from "./ApplicationDoc";
 import html2canvas from "html2canvas";
 import SubmitButton from "../../../components/submitButton";
+
 const doc = new jsPDF();
 const printDocument = () => {
   const input = document.getElementById("divToPrint");
@@ -14,12 +16,29 @@ const printDocument = () => {
     pdf.save("download.pdf");
   });
 };
-const GeneratePdf = () => {
+
+
+
+
+const GeneratePdf = (props) => {
+
+
+
+
+
+
+
+
+  // console.log();
+  // console.log(currentApplicatin)
+
+
+
   return (
     <>
       <div id="divToPrint" className="mt4">
         <div>
-          <DocumentApp />
+          <DocumentApp data={props.location.propsSearch}/>
         </div>
       </div>
       <div className="text-center">
