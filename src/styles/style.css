@@ -8,6 +8,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  
 }
 #header.header-transparent {
   background: none;
@@ -35,6 +36,7 @@
   overflow: hidden;
   position: relative;
   text-align: center;
+  /* overflow: auto; */
 }
 #hero-no-slider::before {
   content: "";
@@ -382,4 +384,5 @@ input[type="radio"] {
 }
 .table{
   margin-top: 8vh;
+ 
 }

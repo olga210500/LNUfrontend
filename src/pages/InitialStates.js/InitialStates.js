@@ -1,24 +1,24 @@
+import { MDBBtn } from "mdbreact"
+import DocumentApp from "../ApplicationPage/GeneratePDF/ApplicationDoc"
 
 const ApplicationInitialState={
-    id:0,
-    fullName: "",
-    date:new Date(),
-    status: 0,
-    fullTimePosition: "", // повна зайнятість
-    partTimePosition: "", // за сумісництвом
-    isAbroadTrip: Boolean(),
-    purpose: "",
-    retentionType:0, //повернення коштів
-    city: "",
-    country: "",
-    institution: "", //заклад куди направляєтесь
-    startDate: new Date(),
-    endDate: new Date(),
-    route: "", //маршут
-    transport: "", //нема в базі
-    expensesPayment: "",
-    tripReason: "",
-    userId:'',
+  "userId": "",
+  "date": "",
+  "fullName": "",
+  "fullTimePosition": "",
+  "partTimePosition": "",
+  "isAbroadTrip": true,
+  "purpose": "string",
+  "retentionType": 0,
+  "city": "",
+  "country": "",
+  "institution": "string",
+  "startDate": "",
+  "endDate": "",
+  "route": "",
+  "transport": "string",
+  "expensesPayment": "string",
+  "tripReason": "string"
   }
 const UsersTableColumn= [
   {
@@ -60,9 +60,9 @@ const UsersTableColumn= [
     width: 150,
   },
 ]
-const ApplicationColumns=[ {
+const AdminApplicationColumns=[ {
   label: "Повне ім'я",
-  field: "FullName",
+  field: "fullName",
   width: "10vh",
   attributes: {
     "aria-controls": "DataTable",
@@ -71,14 +71,58 @@ const ApplicationColumns=[ {
 },
 {
   label: "Статус заявки",
-  field: "Status",
+  field: "status",
   width: 170,
   sort: "disabled",
 },
 {
   label: "Дата створення заявки",
-  field: "Date",
+  field: "date",
   width: 200,
   sort: "disabled",
+},
+{
+  label: "Згенерувати заявку",
+  width: 200,
+  sort: "disabled",
+  // edit:<DocumentApp/>
+  // field:'generateApp'
+  // action:'generateApp'
+
+
 }]
-export default {ApplicationInitialState,UsersTableColumn,ApplicationColumns}
+
+
+const UserApplicationColumns=[ {
+  label: "Повне ім'я",
+  field: "fullName",
+  width: "10vh",
+  attributes: {
+    "aria-controls": "DataTable",
+    "aria-label": "FirstName",
+  },
+},
+{
+  label: "Статус заявки",
+  field: "status",
+  width: 170,
+  sort: "disabled",
+},
+{
+  label: "Дата створення заявки",
+  field: "date",
+  width: 200,
+  sort: "disabled",
+},
+{
+  label: "Згенерувати заявку",
+  width: 200,
+  sort: "disabled",
+  // edit:<DocumentApp/>
+  // field:'generateApp'
+  // action:'generateApp'
+
+
+}]
+
+export default {ApplicationInitialState,UsersTableColumn,AdminApplicationColumns,UserApplicationColumns}
