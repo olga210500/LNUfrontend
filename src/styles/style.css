@@ -158,11 +158,16 @@ a:hover,
   height: 44px !important;
   margin-bottom: 10px;
   border: 0 !important;
+  width: 100% !important;
 }
 
 .ant-input-password-icon{
   position: absolute;
   margin: 15px 0 0 -20px;
+}
+
+.ant-input-password input{
+  width: 100% !important;
 }
 
 .contact .php-email-form input,
@@ -172,9 +177,7 @@ a:hover,
   font-size: 14px;
   outline: none !important;
   text-indent: 0 !important;
-  height: 44px !important;
   border: 1px solid #dfe7f1 !important;
-  width: 100% !important;
   text-align: left;
 }
 
@@ -411,4 +414,66 @@ input[type="radio"] {
 }
 .table{
   margin-top: 8vh;
+}
+
+.forgot{
+  /*text-align: center;*/
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  font-size: 16px;
+  color: #6f7a85;
+  opacity: .95;
+  cursor: pointer;
+  /*font-family: "SourceSansPro";*/
+  /*margin-top: -10px;*/
+  /*margin-left:200px;*/
+}
+
+.forgot:hover{
+  text-decoration: underline;
+}
+
+.GoogleFacebookLogin{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.socialButton{
+  margin-top: 3px;
+  color: rgb(255, 255, 255) !important;
+  outline: none!important;
+  border: 0 !important;
+  border-radius: 4px !important;
+}
+
+.socialImg{
+  height: 25px;
+  width: auto;
+  margin-left: -4px;
+}
+
+#googleBtn{
+  background-color: rgb(222, 78, 59);
+  padding: 7px 7px;
+}
+
+#googleBtn:hover{
+  background-color: rgba(222, 78, 59, 0.9);
+}
+
+#imgSpanGoogle{
+  padding-right: 5px;
+  border-right: 1px solid #BB3F30;
+}
+
+.btnText{
+  margin-left: 4px;
+  font-size: small ;
+}
+
+.rememberMe span{
+  font-size: 14px;
+  padding: 1px;
 }
