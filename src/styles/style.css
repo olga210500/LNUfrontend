@@ -6,6 +6,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  
 }
 #header.header-transparent {
   background: none;
@@ -33,6 +34,7 @@
   overflow: hidden;
   position: relative;
   text-align: center;
+  /* overflow: auto; */
 }
 #hero-no-slider::before {
   content: "";
@@ -476,4 +478,49 @@ input[type="radio"] {
 .rememberMe span{
   font-size: 14px;
   padding: 1px;
+}
+ 
+
+.generate{
+  color:black
+}
+
+
+
+
+.pageBody {
+  margin: 2vh;
+  background: rgb(204,204,204); 
+}
+page {
+  background: white;
+  display: block;
+  padding: 25px;
+  margin: 25px;
+  margin-bottom: 0.5cm;
+}
+page[size="A4"] {  
+  width: 21cm;
+  height: 29.7cm; 
+}
+.document{
+  display: block;
+}
+.pageBody p{
+  font-family: 'Times New Roman';
+  font-size: 14;
+}
+.appHead{
+
+  display: grid;
+  grid-template-columns:auto;
+
+  text-align: left;
+ 
+  justify-content: center;
+  
+
+}
+.mainText{
+  text-align: center;
 }
