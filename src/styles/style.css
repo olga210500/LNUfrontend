@@ -492,7 +492,7 @@ input[type="radio"] {
   margin: 2vh;
   background: rgb(204,204,204); 
 }
-page {
+/* page {
   background: white;
   display: block;
   padding: 25px;
@@ -502,22 +502,38 @@ page {
 page[size="A4"] {  
   width: 21cm;
   height: 29.7cm; 
-}
+} */
 .document{
-  display: block;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #4fa6d5; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  width:21cm ;
+  height:29.7cm;
+  
 }
 .pageBody p{
   font-family: 'Times New Roman';
   font-size: 14;
 }
-.appHead{
+.space{
+  flex-grow: 5;
+}
+.appHead_part{
+display: flex;
+  right: 0;
+/* background-color: #666; */
+}
+.appHead{ 
+   flex-grow: 0.3;
 
-  display: grid;
-  grid-template-columns:auto;
+  /* background-color: #68a4c4; */
 
   text-align: left;
+  padding-right: 16px;
  
-  justify-content: center;
+  /* justify-content: center; */
   
 
 }

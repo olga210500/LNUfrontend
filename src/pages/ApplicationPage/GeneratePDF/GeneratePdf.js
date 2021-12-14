@@ -36,8 +36,8 @@ const GeneratePdf = (props) => {
 
   return (
     <>
-      <div id="divToPrint" className="mt4">
-        <div>
+      <div id="divToPrint" className="mt5">
+        <div className="">
           <DocumentApp data={props.location.propsSearch}/>
         </div>
       </div>

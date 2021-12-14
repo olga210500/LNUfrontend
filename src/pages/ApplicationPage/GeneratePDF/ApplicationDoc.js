@@ -1,4 +1,3 @@
-import { PDFDownloadLink, Document, Page } from "@react-pdf/renderer";
 import { getCurrentApplication } from "../../../actions/applicationAtcion";
 import { useEffect, useState } from "react";
 import "../../../styles/style.css";
@@ -26,8 +25,10 @@ const DocumentApp = (data) => {
   return (
     <>
       <div className="pageBody"></div>
-      <page size="A4">
+ 
         <div className="document">
+        <div className='appHead_part'>
+        <div className='space'></div>
         <div className="appHead">
           <p>
             Ректору
@@ -48,9 +49,15 @@ const DocumentApp = (data) => {
           </p>
           <p>{arrData[0].fullName}</p>
         </div>
-        <div className="mainText">Заява</div>
         </div>
-      </page>
+        <div className="mainText">
+          <p>Заява</p>
+          <p>Прошу відрятити мене </p>
+        
+        
+        </div>
+        </div>
+
 
       {/*     
         <div  className="right">
