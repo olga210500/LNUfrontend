@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import {Form, Input} from 'antd';
+import {Checkbox, Form, Input} from 'antd';
 import Navibar from "../../components/Navibar";
 import "../../styles/style.css";
 import jwt from 'jwt-decode';
-import { connect } from "react-redux";
-import { fetchUser} from "../../actions/userActions";
+import {connect} from "react-redux";
+import {fetchUser} from "../../actions/userActions";
 import SubmitButton from "../../components/submitButton";
 import {emptyInput, minLength} from "../../components/Notifications/Messages";
 import {checkEmail} from "../Signup/verification";
@@ -66,6 +66,11 @@ const Signin = (props: Props) => {
                     <Form.Item name="Password" className="mb-3" rules={validationSchema.Password}>
                       <Input.Password visibilityToggle={true} className="form-control" placeholder="Пароль" />
                     </Form.Item>
+                <div className="rememberMeContainer">
+                  <Form.Item name="RememberMe" valuePropName="checked">
+                    <Checkbox className="RememberMe">Запам`ятати мене</Checkbox>
+                  </Form.Item>
+                </div>
                 <Form.Item>
                   <SubmitButton title="Увійти" loading={!available}/>
                 </Form.Item>

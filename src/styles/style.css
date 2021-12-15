@@ -436,7 +436,7 @@ input[type="radio"] {
   text-decoration: underline;
 }
 
-.GoogleFacebookLogin{
+.rememberMeContainer{
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -451,18 +451,19 @@ input[type="radio"] {
 }
 
 .socialImg{
-  height: 25px;
+  height: 15px;
   width: auto;
-  margin-left: -4px;
+  margin-left: -1px;
 }
 
 #googleBtn{
+  margin-top: 20px;
   background-color: rgb(222, 78, 59);
-  padding: 7px 7px;
+  padding: 4px;
 }
 
 #googleBtn:hover{
-  background-color: rgba(222, 78, 59, 0.9);
+  background-color: rgba(222, 78, 59, 0.85);
 }
 
 #imgSpanGoogle{
@@ -515,7 +516,7 @@ page[size="A4"] {
 }
 .pageBody p{
   font-family: 'Times New Roman';
-  font-size: 14;
+  font-size: 14px;
 }
 .space{
   flex-grow: 5;
