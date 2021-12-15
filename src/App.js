@@ -13,8 +13,7 @@ import InformationLoggedIn from "./pages/errors/loggedInError";
 import AdminPage from "./pages/UserPage/AdminPageComponent";
 import GeneralPage from "./pages/UserPage/UserGeneral";
 import GeneratePdf from "./pages/ApplicationPage/GeneratePDF/GeneratePdf";
-import UserApplications from "./pages/ApplicationPage/UserApplications";
-import ShowApplications from "./pages/ApplicationPage/ShowApplications";
+import UsersApplicationPage from "./pages/ApplicationPage/AdminApplications";
 
 const App = ({ userReducer }) => {
   const fields = [
@@ -64,7 +63,7 @@ const App = ({ userReducer }) => {
   
     {
       path:'/allApplications',
-      component:ShowApplications
+      component:UsersApplicationPage
     },
     {
       path: `/generatePdf`,
