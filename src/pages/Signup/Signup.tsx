@@ -11,6 +11,8 @@ import GoogleLoginWrapper from "../Signin/GoogleLoginWrapper";
 
 const Signup = () => {
   const [form] = Form.useForm();
+  const [googleId, setGoogleId] = useState("");
+  const [googleLoading, setGoogleLoading] = useState(true);
   const [available, setAvailable] = useState(true);
 
   const initialValues = {
