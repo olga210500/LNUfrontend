@@ -21,29 +21,20 @@ export const fetchUser = (userInfo) => async (dispatch) => {
       });
 };
 
-export const signUserUp = (userInfo)  => {
-
-  fetch(`${config.BASE_URL}Auth/signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(userInfo),
-  })
-    .then((res) => {
-      if (res.status < 400) {
-        res.json();
-        window.location =`${config.Front_URL}/informationPage`;
-      } else {
-        throw new Error(
-          "Користувач з такою електронною поштою вже зареєстрований в системі!"
-        );
-      }
-      return true;
-    })
-    .catch((err) => alert(err));
-};
+export const signUserUp = async (userInfo) => {
+ return await Api.post(`${config.BASE_URL}Auth/signup`, userInfo)
+     .then((response) => {
+         alert(response.data.value);
+         //notificationLogic("success", response.data.value);
+         window.location =`${config.Front_URL}/informationPage`;
+     })
+     .catch((error) => {
+         if (error.response.status === 400) {
+             //notificationLogic("error", error.response.data.value);
+             alert(error.response.data.value);
+         }
+     });
+}
 
 export const logOut = () => {
   return async (dispatch) => {
@@ -71,6 +62,22 @@ export const sendGoogleToken = (token) => async (dispatch) => {
                 AuthStore.setToken(response.data.token);
                 dispatch(setUser(jwt_decode(response.data.token)))
                 window.location =`${config.Front_URL}/userPage`;
+            }
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                alert(error.response.data.value);
+                //notificationLogic("error", error.response.data.value);
+            }
+        });
+};
+
+export const sendGoogleTokenToSignUp = async (token) => {
+    return await Api.post(`Auth/signup/google/?googleToken=${token}`)
+        .then((response) => {
+            if (response.data.token !== null) {
+                alert(response.data.value);
+                window.location =`${config.Front_URL}/informationPage`;
             }
         })
         .catch((error) => {

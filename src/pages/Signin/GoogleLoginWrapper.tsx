@@ -10,7 +10,7 @@ const GoogleLoginWrapper = (props: any) => {
         <GoogleLogin
             clientId={props.googleId}
             render={(renderProps: any) => (
-                <Button onClick={renderProps.onClick} disabled={renderProps.disabled} id="googleBtn" className="rounded socialButton">
+                <Button onClick={renderProps.onClick}  id="googleBtn" className="rounded socialButton">
                     <p id="imgSpanGoogle">
                         <img
                             alt="Google icon"
@@ -18,7 +18,9 @@ const GoogleLoginWrapper = (props: any) => {
                             src={googleImg}
                         />
                     </p>
-                    <p className="btnText">Увійти за допомогою<br/>Google</p>
+                    <p className="btnText">{props.signUp
+                        ? <>Зареєструватись</>
+                        : <>Увійти</> } з <br/>Google</p>
                 </Button>
             )}
 
