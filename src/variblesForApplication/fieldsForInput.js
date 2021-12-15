@@ -35,7 +35,8 @@ const fieldsForInput = [
       type: "text",
       name: "country",
       id: "country",
-      placeholder: "Ваша відповідь",
+      placeholder: "Якщо відрядження по Україні, поставте '-'",
+      required:'required'
     },
     {
       title:"Вкажіть дату початку відрядження",
@@ -59,6 +60,40 @@ const fieldsForInput = [
       id: "route",
       placeholder: "Ваша відповідь",
     },
+    {
+      title:
+        "Вкажіть установу, куди відряджаєтесь",
+      type: "text",
+      name: "institution",
+      id: "institution",
+      placeholder: "Наприклад: Міністерство освіти і науки України",
+      required:'required'
+    },
+    {
+      title:'Вкажіть транспорт, яким будете подорожувати (для відряджень по Україні)',
+      type: "text",
+      name: "transport",
+      id: "transport",
+      placeholder: "Наприклад: літак, автомобіль, велосипед",
+    },
+    {
+      title:'Вкажіть, як буде здійснюватись оплата видатків на відрядження.',
+      type: "text",
+      name: "expensesPayment",
+      id: "expensesPayment",
+      placeholder: "Наприклад: Витрати добові за власний кошт/ за рахунок приймаючої сторони",
+      required:'required'
+    },
+    {
+      title:"Вкажіть підставу відрядження",
+      type: "text",
+      name: "tripReason",
+      id: "tripReason",
+      placeholder: "Наприклад:рапорт проректора, запрошення",
+      required:'required'
+    }
+    
+    
 
   ];
   export default fieldsForInput;

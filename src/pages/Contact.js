@@ -52,7 +52,7 @@ const onSubmit = (e) => {
                     <i className="bx bx-map">
                       <Icons.Map />
                     </i>
-                    <h3>Our Address</h3>
+                    <h3>Наша адреса</h3>
                     <p>
                       вулиця Університетська, 1,
                       <br /> Львів, Львівська область, 79000
@@ -64,7 +64,7 @@ const onSubmit = (e) => {
                     <i className="bx bx-envelope">
                       <Icons.Envelope />
                     </i>
-                    <h3>Email Us</h3>
+                    <h3>Напишіть нам</h3>
                     <p>
                       zag_kan@lnu.edu.ua.
                       <br />
@@ -76,7 +76,7 @@ const onSubmit = (e) => {
                     <i className="bx bx-phone-call">
                       <Icons.Telephone />
                     </i>
-                    <h3>Call Us</h3>
+                    <h3>Зателефонуйте нам</h3>
                     <p>
                       +38 (032) 239-43-25
                       <br />
@@ -95,7 +95,7 @@ const onSubmit = (e) => {
                       name="name"
                       className="form-control"
                       id="name"
-                      placeholder="Your Name"
+                      placeholder="Ваше ім'я"
                       value={state.name}
                       onChange={handleOnChange}
                       required
@@ -107,7 +107,7 @@ const onSubmit = (e) => {
                       className="form-control"
                       name="email"
                       id="email"
-                      placeholder="Your Email"
+                      placeholder="Ваш Email"
                       value={state.email}
                       onChange={handleOnChange}
                       required
@@ -120,7 +120,7 @@ const onSubmit = (e) => {
                     className="form-control"
                     name="phoneNumber"
                     id="phoneNumber"
-                    placeholder="Phone number: +38 (032) 239-43-25" 
+                    placeholder="Номер телефону: +38 (032) 239-43-25" 
                     minLength="13"
                     maxLength="13"
                     value={state.phoneNumber}
@@ -134,14 +134,14 @@ const onSubmit = (e) => {
                     name="feedBackDescription"
                     id="feedBackDescription"
                     rows="5"
-                    placeholder="Message"
+                    placeholder="Повідомлення"
                     value={state.feedBackDescription}
                     // value={''}
                     onChange={handleOnChange}
                     required
                   ></textarea>
                 </div>
-                <SubmitButton title="Send Message" />
+                <SubmitButton title="Надіслати" />
               </form>
             </div>
           </div>

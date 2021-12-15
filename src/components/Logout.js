@@ -12,7 +12,7 @@ const Logout = ({ logOut }) => {
       <Nav>
         <Nav className="pb-2">
           <Link to="/" onClick={onSubmit}>
-            Logout
+            Вийти
           </Link>
         </Nav>
       </Nav>

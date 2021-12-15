@@ -4,7 +4,7 @@ import { useState } from "react";
 import InputField from "../components/InputField";
 import fieldsForInput from "../variblesForApplication/fieldsForInput";
 import SubmitButton from "../components/submitButton";
-import radioFileds from "../variblesForApplication/radioFields";
+import  { withInputFields,radioFields, radioFileds } from "../variblesForApplication/radioFields";
 import AuthStore from "../stores/AuthStore";
 // import sendApplication  from "../actions/applicationAtcion.js";
 import jwt_decode from "jwt-decode";

@@ -15,6 +15,9 @@ import ShowApplications from "./pages/ApplicationPage/ShowApplications";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
+import UsersApplicationPage from "./pages/ApplicationPage/AdminApplications";
+
+
 const App = ({ userReducer }) => {
   const fields = [
     {
@@ -66,7 +69,7 @@ const App = ({ userReducer }) => {
     },
     {
       path:'/allApplications',
-      component:ShowApplications
+      component:UsersApplicationPage
     },
     {
       path: `/generatePdf`,
