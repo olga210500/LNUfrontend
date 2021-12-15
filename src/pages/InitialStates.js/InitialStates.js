@@ -8,17 +8,17 @@ const ApplicationInitialState={
   "fullTimePosition": "",
   "partTimePosition": "",
   "isAbroadTrip": true,
-  "purpose": "string",
+  "purpose": "",
   "retentionType": 0,
   "city": "",
   "country": "",
-  "institution": "string",
+  "institution": "",
   "startDate": "",
   "endDate": "",
   "route": "",
-  "transport": "string",
-  "expensesPayment": "string",
-  "tripReason": "string"
+  "transport": "",
+  "expensesPayment": "",
+  "tripReason": ""
   }
 const UsersTableColumn= [
   {
@@ -78,16 +78,15 @@ const AdminApplicationColumns=[ {
 {
   label: "Дата створення заявки",
   field: "date",
-  width: 200,
+  width: 100,
   sort: "disabled",
 },
 {
   label: "Згенерувати заявку",
-  width: 200,
+  width: 150,
   sort: "disabled",
-  // edit:<DocumentApp/>
   field:'generateApp'
-  // action:'generateApp'
+  
 
 
 }]
@@ -116,11 +115,9 @@ const UserApplicationColumns=[ {
 },
 {
   label: "Згенерувати заявку",
-  width: 200,
+  width: 50,
   sort: "disabled",
-  // edit:<DocumentApp/>
-  // field:'generateApp'
-  // action:'generateApp'
+
 
 
 }]

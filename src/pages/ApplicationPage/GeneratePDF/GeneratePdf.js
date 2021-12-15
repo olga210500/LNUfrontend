@@ -41,7 +41,7 @@ const GeneratePdf = (props) => {
           <DocumentApp data={props.location.propsSearch}/>
         </div>
       </div>
-      <div className="text-center">
+      <div className="text-center" id='buttonGenerate'>
         <button  onClick={printDocument} type="submit" className="rounded">
           Generate PDF
         </button>

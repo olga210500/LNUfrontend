@@ -482,33 +482,30 @@ input[type="radio"] {
  
 
 .generate{
-  color:black
+  color:black;
+  font-size: medium;
+  margin: 0;
+  padding: 0;
 }
 
+.userPage{
+  margin-top: 15vh;
+  height: 100px;
+  width: 200px;
 
+
+
+}
 
 
 .pageBody {
   margin: 2vh;
   background: rgb(204,204,204); 
 }
-/* page {
-  background: white;
-  display: block;
-  padding: 25px;
-  margin: 25px;
-  margin-bottom: 0.5cm;
-}
-page[size="A4"] {  
-  width: 21cm;
-  height: 29.7cm; 
-} */
 .document{
   display: flex;
   flex-direction: column;
-  /* background-color: #4fa6d5; */
-  /* align-items: center; */
-  /* justify-content: center; */
+  box-sizing: border-box;
   width:21cm ;
   height:29.7cm;
   
@@ -539,4 +536,26 @@ display: flex;
 }
 .mainText{
   text-align: center;
+  padding:0 15px;
+  width:20cm ;
+ 
+}
+.mainText p{
+  text-align: left;
+  white-space: pre;
+  
+}
+#buttonGenerate{
+  padding-bottom: 16px;
+}
+ .signDate p{
+  display:inline-block;
+  flex-direction: row;
+  padding-top: 100px;
+  padding-left: 21px;
+  
+ 
+}
+#sign_{
+  margin-left: 60%;
 }

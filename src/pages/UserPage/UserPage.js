@@ -1,7 +1,7 @@
 import userApi from "../../api/userApi";
 import { useState, useEffect } from "react";
-import UserApplications from "../ApplicationPage/UserApplications";
-
+import Navibar from "../../components/Navibar";
+import '../../styles/style.css'
 const UserPage = () => {
   const [userInfo, setuserInfo] = useState({
     email: "",
@@ -16,10 +16,12 @@ const UserPage = () => {
   }, []);
 
   return (
-    <UserApplications/>
-    // <div>
-    //   <p> {userInfo.email}</p>
-    // </div>
+    <>
+    <Navibar/>
+    <div className="userPage">
+    Hello user
+  </div>
+    </>
   );
 };
 
