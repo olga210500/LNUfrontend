@@ -6,7 +6,7 @@ import { Container} from "react-bootstrap";
 import Navibar from "../../components/Navibar";
 import { getMyApplication } from "../../actions/userActions";
 import { Link } from "react-router-dom";
-
+import * as Icons from "react-bootstrap-icons";
 const UsersApplicationPage = () => {
   const [datatable, setApplication] = useState({
     columns: InitialStates.AdminApplicationColumns,
@@ -28,7 +28,8 @@ const UsersApplicationPage = () => {
       element.generateApp=  <Link className='generate' to={{
         pathname: "/generatePdf",
         propsSearch: element.id
-    }}>GeneratePDF</Link>
+    }}>Згенерувати заявку</Link>
+   
        
      })}
       {console.log(datatable.rows)}

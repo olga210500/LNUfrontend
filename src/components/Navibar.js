@@ -9,21 +9,38 @@ import Logout from "./Logout";
 const params = [
   {
     to: "/",
-    name: "Home",
+    name: "Головна",
   },
   {
     to: "/about",
-    name: "About",
+    name: "Про нас",
   },
   {
     to: "/contact",
-    name: "Contact",
+    name: "Контакти",
   },
 ];
 const paramps2 = [
-  { to: "/signin", name: "Sign in" },
-  { to: "/signup", name: "Sign up" },
+  { to: "/signin", name: "Увійти" },
+  { to: "/signup", name: "Зареєструватись" },
 ];
+const loggedInParams=[
+  {
+    to:'/',
+    name:'Головна'
+  },
+
+  {
+    to: "/userPage",
+    name:'Моя сторінка'
+  },
+
+  {
+    to:'/allApplications',
+    name:'Заявки'
+  },
+
+]
 
 const Navibar = ({ userReducer }) => (
   <Navbar collapseOnSelect expand="lg" variant="dark" id="header">
@@ -33,19 +50,29 @@ const Navibar = ({ userReducer }) => (
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
           <Nav className="me-auto">
-            {params.map(({ to, name }, i) => (
-              <Nav className="pb-2" key={i}>
-                <Link to={to}>{name}</Link>
-              </Nav>
-            ))}
+
+          {!userReducer.loggedIn ? (
+              params.map(({ to, name },i) => (
+                <Nav key={i} className="pb-2">
+                  <Link to={to}> {name} </Link>
+                </Nav>
+              ))
+            ) : (
+              loggedInParams.map(({ to, name },i) => (
+                <Nav key={i} className="pb-2">
+                  <Link to={to}> {name} </Link>
+                </Nav>
+              ))
+            )}
+
           </Nav>
         </Nav>
 
         <Nav>
           <Nav className="me-auto">
             {!userReducer.loggedIn ? (
-              paramps2.map(({ to, name }) => (
-                <Nav className="pb-2">
+              paramps2.map(({ to, name },i) => (
+                <Nav key={i} className="pb-2">
                   <Link to={to}> {name} </Link>
                 </Nav>
               ))
