@@ -11,7 +11,6 @@ import InformationPage from "./pages/Signup/informationPage";
 import InformationLoggedIn from "./pages/errors/loggedInError";
 import GeneralPage from "./pages/UserPage/UserGeneral";
 import GeneratePdf from "./pages/ApplicationPage/GeneratePDF/GeneratePdf";
-import ShowApplications from "./pages/ApplicationPage/ShowApplications";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 

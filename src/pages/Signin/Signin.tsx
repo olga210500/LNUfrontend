@@ -46,7 +46,6 @@ const Signin = (props: Props) => {
 
   const handleGoogleResponse = async (response: any) => {
     await props.sendGoogleToken(response.tokenId);
-    window.location.reload();
   }
 
   const getId = async () => {
