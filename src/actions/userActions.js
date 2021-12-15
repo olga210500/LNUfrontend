@@ -4,28 +4,21 @@ import jwt_decode from "jwt-decode";
 import store from "../store";
 import config from "../config";
 
-
-
 const setUser = (payload) => ({ type: '', payload });
 const logUserOut = () => ({ type: "LOG_OUT" });
 
 
 export const fetchUser = (userInfo) => async (dispatch) => {
-  const response = await Api.post(`Login/signin`, userInfo)
+    return await Api.post(`Login/signin`, userInfo)
       .then((response) => {
         if (response.data.token !== null) {
           AuthStore.setToken(response.data.token);
           dispatch(setUser(jwt_decode(response.data.token)))
           window.location =`${config.Front_URL}/userPage`;
         }
-
-
       }).catch(() => {
         alert("Неправильний логін або пароль!");
-        
       });
-        return response;
-
 };
 
 export const signUserUp = (userInfo)  => {
@@ -37,7 +30,6 @@ export const signUserUp = (userInfo)  => {
       Accept: "application/json",
     },
     body: JSON.stringify(userInfo),
-
   })
     .then((res) => {
       if (res.status < 400) {
@@ -50,13 +42,8 @@ export const signUserUp = (userInfo)  => {
       }
       return true;
     })
-
     .catch((err) => alert(err));
 };
-
-
-
- 
 
 export const logOut = () => {
   return async (dispatch) => {
@@ -73,10 +60,31 @@ export const logOut = () => {
 
 
 export const sendQuestion =async (questionOption)=> {
-  const response = await Api.post(`Auth/sendQuestion`, questionOption)
+    return await Api.post(`Auth/sendQuestion`, questionOption)
       .then((response) =>{return response})
-      return response;
-    };
+};
+
+export const sendGoogleToken = (token) => async (dispatch) => {
+    return await Api.post(`Login/signin/google/?googleToken=${token}`)
+        .then((response) => {
+            if (response.data.token !== null) {
+                AuthStore.setToken(response.data.token);
+                dispatch(setUser(jwt_decode(response.data.token)))
+                window.location =`${config.Front_URL}/userPage`;
+            }
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                alert(error.response.data.value);
+                //notificationLogic("error", error.response.data.value);
+            }
+        });
+};
+
+export const getGoogleId = async () => {
+    const response = await Api.get("Login/GoogleClientId");
+    return response.data;
+};
 
 export const getMyApplication=async()=>{
   let jwt = AuthStore.getToken();
