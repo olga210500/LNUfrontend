@@ -52,7 +52,6 @@ const Signup = () => {
 
   const handleGoogleResponse = async (response: any) => {
     await sendGoogleTokenToSignUp(response.tokenId);
-    window.location.reload();
   }
 
   const getId = async () => {

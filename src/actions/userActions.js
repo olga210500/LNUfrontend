@@ -3,6 +3,7 @@ import Api from "../api/api";
 import jwt_decode from "jwt-decode";
 import store from "../store";
 import config from "../config";
+import notificationLogic from "../components/Notifications/Notification";
 
 const setUser = (payload) => ({ type: '', payload });
 const logUserOut = () => ({ type: "LOG_OUT" });
@@ -16,22 +17,21 @@ export const fetchUser = (userInfo) => async (dispatch) => {
           dispatch(setUser(jwt_decode(response.data.token)))
           window.location =`${config.Front_URL}/userPage`;
         }
-      }).catch(() => {
-        alert("Неправильний логін або пароль!");
+      }).catch((error) => {
+          if (error.response.status === 400) {
+              notificationLogic("error", error.response.data.value);
+          }
       });
 };
 
 export const signUserUp = async (userInfo) => {
  return await Api.post(`${config.BASE_URL}Auth/signup`, userInfo)
      .then((response) => {
-         alert(response.data.value);
-         //notificationLogic("success", response.data.value);
-         window.location =`${config.Front_URL}/informationPage`;
+         notificationLogic("success", response.data.value);
      })
      .catch((error) => {
          if (error.response.status === 400) {
-             //notificationLogic("error", error.response.data.value);
-             alert(error.response.data.value);
+             notificationLogic("error", error.response.data.value);
          }
      });
 }
@@ -51,8 +51,15 @@ export const logOut = () => {
 
 
 export const sendQuestion =async (questionOption)=> {
-    return await Api.post(`Auth/sendQuestion`, questionOption)
-      .then((response) =>{return response})
+    return await Api.post("Auth/sendQuestion", questionOption)
+        .then((response) => {
+            notificationLogic("success", response.data.value);
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                notificationLogic("error", error.response.data.value);
+            }
+        });
 };
 
 export const sendGoogleToken = (token) => async (dispatch) => {
@@ -66,8 +73,7 @@ export const sendGoogleToken = (token) => async (dispatch) => {
         })
         .catch((error) => {
             if (error.response.status === 400) {
-                alert(error.response.data.value);
-                //notificationLogic("error", error.response.data.value);
+                notificationLogic("error", error.response.data.value);
             }
         });
 };
@@ -76,14 +82,12 @@ export const sendGoogleTokenToSignUp = async (token) => {
     return await Api.post(`Auth/signup/google/?googleToken=${token}`)
         .then((response) => {
             if (response.data.token !== null) {
-                alert(response.data.value);
-                window.location =`${config.Front_URL}/informationPage`;
+                notificationLogic("success", response.data.value);
             }
         })
         .catch((error) => {
             if (error.response.status === 400) {
-                alert(error.response.data.value);
-                //notificationLogic("error", error.response.data.value);
+                notificationLogic("error", error.response.data.value);
             }
         });
 };
@@ -96,13 +100,11 @@ export const getGoogleId = async () => {
 export const forgotPassword = async (data) => {
     return await Api.post("Password/forgotPassword", data)
         .then((response) => {
-            alert(response.data.value);
-            //notificationLogic("success", response.data.value);
+            notificationLogic("success", response.data.value);
         })
         .catch((error) => {
             if (error.response.status === 400) {
-                alert(error.response.data.value);
-                //notificationLogic("error", error.response.data.value);
+                notificationLogic("error", error.response.data.value);
             }
         });
 };
@@ -110,13 +112,11 @@ export const forgotPassword = async (data) => {
 export const resetPassword = async (data) => {
     return await Api.post("Password/resetPassword", data)
         .then((response) => {
-            alert(response.data.value);
-            //notificationLogic("success", response.data.value);
+            notificationLogic("success", response.data.value);
         })
         .catch((error) => {
             if (error.response.status === 400) {
-                alert(error.response.data.value);
-                //notificationLogic("error", error.response.data.value);
+                notificationLogic("error", error.response.data.value);
             }
         });
 };
@@ -124,13 +124,11 @@ export const resetPassword = async (data) => {
 export const changePassword = async (data) => {
     return await Api.post("Password/changePassword", data)
         .then((response) => {
-            alert(response.data.value);
-            //notificationLogic("success", response.data.value);
+            notificationLogic("success", response.data.value);
         })
         .catch((error) => {
             if (error.response.status === 400) {
-                alert(error.response.data.value);
-                //notificationLogic("error", error.response.data.value);
+                notificationLogic("error", error.response.data.value);
             }
         });
 };
