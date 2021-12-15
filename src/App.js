@@ -4,14 +4,13 @@ import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Contact from "./pages/Contact";
 import About from "./pages/About/About";
 import { connect } from "react-redux";
-import Signin from "./pages/Signin/Signin";
+import Signin from "./pages/Signin/Signin.tsx";
 import Application from "./pages/Application";
-import Signup from "./pages/Signup/Signup";
+import Signup from "./pages/Signup/Signup.js";
 import InformationPage from "./pages/Signup/informationPage";
 import InformationLoggedIn from "./pages/errors/loggedInError";
 import GeneralPage from "./pages/UserPage/UserGeneral";
 import GeneratePdf from "./pages/ApplicationPage/GeneratePDF/GeneratePdf";
-import ShowApplications from "./pages/ApplicationPage/ShowApplications";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
