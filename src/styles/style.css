@@ -443,7 +443,6 @@ input[type="radio"] {
 }
 
 .socialButton{
-  margin-top: 3px;
   color: rgb(255, 255, 255) !important;
   outline: none!important;
   border: 0 !important;
@@ -451,15 +450,20 @@ input[type="radio"] {
 }
 
 .socialImg{
-  height: 15px;
+  height: 26px;
   width: auto;
-  margin-left: -1px;
+  margin-left: -3px;
+  display: block;
 }
 
 #googleBtn{
-  margin-top: 20px;
   background-color: rgb(222, 78, 59);
-  padding: 4px;
+  padding-bottom: 2px;
+}
+
+#googleBtn p{
+  display: inline-block;
+  margin: 0;
 }
 
 #googleBtn:hover{
@@ -473,7 +477,7 @@ input[type="radio"] {
 
 .btnText{
   margin-left: 4px;
-  font-size: small ;
+  font-size: small;
 }
 
 .rememberMe span{

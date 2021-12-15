@@ -25,7 +25,6 @@ function handleOnChange(evt) {
 const onSubmit = (e) => {
   e.preventDefault();
   sendQuestion(state);
-  alert('Повідомленя доставлено. Очікуйте на відповідь.')
   setState({
     name: "",
     email: "",

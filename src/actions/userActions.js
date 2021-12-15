@@ -3,60 +3,38 @@ import Api from "../api/api";
 import jwt_decode from "jwt-decode";
 import store from "../store";
 import config from "../config";
-
-
+import notificationLogic from "../components/Notifications/Notification";
 
 const setUser = (payload) => ({ type: '', payload });
 const logUserOut = () => ({ type: "LOG_OUT" });
 
 
 export const fetchUser = (userInfo) => async (dispatch) => {
-  const response = await Api.post(`Login/signin`, userInfo)
+    return await Api.post(`Login/signin`, userInfo)
       .then((response) => {
         if (response.data.token !== null) {
           AuthStore.setToken(response.data.token);
           dispatch(setUser(jwt_decode(response.data.token)))
           window.location =`${config.Front_URL}/userPage`;
         }
-
-
-      }).catch(() => {
-        alert("Неправильний логін або пароль!");
-        
+      }).catch((error) => {
+          if (error.response.status === 400) {
+              notificationLogic("error", error.response.data.value);
+          }
       });
-        return response;
-
 };
 
-export const signUserUp = (userInfo)  => {
-
-  fetch(`${config.BASE_URL}Auth/signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(userInfo),
-
-  })
-    .then((res) => {
-      if (res.status < 400) {
-        res.json();
-        window.location =`${config.Front_URL}/informationPage`;
-      } else {
-        throw new Error(
-          "Користувач з такою електронною поштою вже зареєстрований в системі!"
-        );
-      }
-      return true;
-    })
-
-    .catch((err) => alert(err));
-};
-
-
-
- 
+export const signUserUp = async (userInfo) => {
+ return await Api.post(`${config.BASE_URL}Auth/signup`, userInfo)
+     .then((response) => {
+         notificationLogic("success", response.data.value);
+     })
+     .catch((error) => {
+         if (error.response.status === 400) {
+             notificationLogic("error", error.response.data.value);
+         }
+     });
+}
 
 export const logOut = () => {
   return async (dispatch) => {
@@ -73,10 +51,87 @@ export const logOut = () => {
 
 
 export const sendQuestion =async (questionOption)=> {
-  const response = await Api.post(`Auth/sendQuestion`, questionOption)
-      .then((response) =>{return response})
-      return response;
-    };
+    return await Api.post("Auth/sendQuestion", questionOption)
+        .then((response) => {
+            notificationLogic("success", response.data.value);
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                notificationLogic("error", error.response.data.value);
+            }
+        });
+};
+
+export const sendGoogleToken = (token) => async (dispatch) => {
+    return await Api.post(`Login/signin/google/?googleToken=${token}`)
+        .then((response) => {
+            if (response.data.token !== null) {
+                AuthStore.setToken(response.data.token);
+                dispatch(setUser(jwt_decode(response.data.token)))
+                window.location =`${config.Front_URL}/userPage`;
+            }
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                notificationLogic("error", error.response.data.value);
+            }
+        });
+};
+
+export const sendGoogleTokenToSignUp = async (token) => {
+    return await Api.post(`Auth/signup/google/?googleToken=${token}`)
+        .then((response) => {
+            if (response.data.token !== null) {
+                notificationLogic("success", response.data.value);
+            }
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                notificationLogic("error", error.response.data.value);
+            }
+        });
+};
+
+export const getGoogleId = async () => {
+    const response = await Api.get("Login/GoogleClientId");
+    return response.data;
+};
+
+export const forgotPassword = async (data) => {
+    return await Api.post("Password/forgotPassword", data)
+        .then((response) => {
+            notificationLogic("success", response.data.value);
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                notificationLogic("error", error.response.data.value);
+            }
+        });
+};
+
+export const resetPassword = async (data) => {
+    return await Api.post("Password/resetPassword", data)
+        .then((response) => {
+            notificationLogic("success", response.data.value);
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                notificationLogic("error", error.response.data.value);
+            }
+        });
+};
+
+export const changePassword = async (data) => {
+    return await Api.post("Password/changePassword", data)
+        .then((response) => {
+            notificationLogic("success", response.data.value);
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                notificationLogic("error", error.response.data.value);
+            }
+        });
+};
 
 export const getMyApplication=async()=>{
   let jwt = AuthStore.getToken();

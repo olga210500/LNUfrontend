@@ -1,11 +1,12 @@
-import  { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Form, Input } from 'antd';
 import Navibar from "../../components/Navibar";
 import "../../styles/style.css";
-import { signUserUp } from "../../actions/userActions";
+import {getGoogleId, sendGoogleTokenToSignUp, signUserUp} from "../../actions/userActions";
 import SubmitButton from "../../components/submitButton";
 import { checkEmail, checkNameSurName, checkPassword } from './verification';
 import { emptyInput, minLength} from "../../components/Notifications/Messages";
+import GoogleLoginWrapper from "../Signin/GoogleLoginWrapper";
 
 
 const Signup = () => {
@@ -48,6 +49,23 @@ const Signup = () => {
     await signUserUp(values);
     setAvailable(true);
   };
+
+  const handleGoogleResponse = async (response: any) => {
+    await sendGoogleTokenToSignUp(response.tokenId);
+  }
+
+  const getId = async () => {
+    await getGoogleId().then(
+        (data) => {
+          setGoogleId(data.id);
+        }
+    ).catch(exc => { console.log(exc) });
+    setGoogleLoading(false);
+  }
+
+  useEffect(() => {
+    getId();
+  }, []);
 
   return (
     <>
@@ -98,9 +116,16 @@ const Signup = () => {
                   <Input className="form-control" placeholder="Прізвище" />
                 </Form.Item>
               </div>
-              <Form.Item>
-                <SubmitButton title="Зареєструватись" loading={!available} />
-              </Form.Item>
+              <div className="rememberMeContainer">
+                <Form.Item>
+                  <SubmitButton title="Зареєструватись" loading={!available} />
+                </Form.Item>
+                {googleLoading ? (
+                    ''
+                ) : (
+                    <GoogleLoginWrapper signUp={true} googleId={googleId} handleGoogleResponse={handleGoogleResponse}/>
+                )}
+              </div>
             </Form>
           </div>
         </div>
