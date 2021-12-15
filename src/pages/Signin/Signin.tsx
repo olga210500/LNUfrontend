@@ -42,7 +42,6 @@ const Signin = (props: Props) => {
     setAvailabe(false);
     props.fetchUser(values);
     setAvailabe(true);
-    window.location.reload();
   };
 
   const handleGoogleResponse = async (response: any) => {

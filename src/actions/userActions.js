@@ -93,6 +93,48 @@ export const getGoogleId = async () => {
     return response.data;
 };
 
+export const forgotPassword = async (data) => {
+    return await Api.post("Password/forgotPassword", data)
+        .then((response) => {
+            alert(response.data.value);
+            //notificationLogic("success", response.data.value);
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                alert(error.response.data.value);
+                //notificationLogic("error", error.response.data.value);
+            }
+        });
+};
+
+export const resetPassword = async (data) => {
+    return await Api.post("Password/resetPassword", data)
+        .then((response) => {
+            alert(response.data.value);
+            //notificationLogic("success", response.data.value);
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                alert(error.response.data.value);
+                //notificationLogic("error", error.response.data.value);
+            }
+        });
+};
+
+export const changePassword = async (data) => {
+    return await Api.post("Password/changePassword", data)
+        .then((response) => {
+            alert(response.data.value);
+            //notificationLogic("success", response.data.value);
+        })
+        .catch((error) => {
+            if (error.response.status === 400) {
+                alert(error.response.data.value);
+                //notificationLogic("error", error.response.data.value);
+            }
+        });
+};
+
 export const getMyApplication=async()=>{
   let jwt = AuthStore.getToken();
   let decodedJwt = jwt_decode(jwt);

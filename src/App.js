@@ -8,13 +8,12 @@ import Signin from "./pages/Signin/Signin";
 import Application from "./pages/Application";
 import Signup from "./pages/Signup/Signup";
 import InformationPage from "./pages/Signup/informationPage";
-import UserPage from "./pages/UserPage/UserPage";
 import InformationLoggedIn from "./pages/errors/loggedInError";
-import AdminPage from "./pages/UserPage/AdminPageComponent";
 import GeneralPage from "./pages/UserPage/UserGeneral";
 import GeneratePdf from "./pages/ApplicationPage/GeneratePDF/GeneratePdf";
-import UserApplications from "./pages/ApplicationPage/UserApplications";
 import ShowApplications from "./pages/ApplicationPage/ShowApplications";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 const App = ({ userReducer }) => {
   const fields = [
@@ -29,8 +28,6 @@ const App = ({ userReducer }) => {
 
   ];
   const noSignedIn = [
- 
-  
     {
       path: "/signup",
       component: Signup,
@@ -47,8 +44,14 @@ const App = ({ userReducer }) => {
       path: "/userPage",
       component: Signin,
     },
-    
-    
+    {
+      path: "/forgotPassword",
+      component: ForgotPassword,
+    },
+    {
+      path: "/resetPassword",
+      component: ResetPassword,
+    },
   ];
   const signedInPages = [
     { path: "/signin", 
@@ -61,7 +64,6 @@ const App = ({ userReducer }) => {
       path: "/userPage",
       component: GeneralPage,
     },
-  
     {
       path:'/allApplications',
       component:ShowApplications
