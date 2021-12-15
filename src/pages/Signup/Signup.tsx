@@ -10,7 +10,7 @@ import { emptyInput, minLength} from "../../components/Notifications/Messages";
 
 const Signup = () => {
   const [form] = Form.useForm();
-  const [available, setAvailabe] = useState(true);
+  const [available, setAvailable] = useState(true);
 
   const initialValues = {
     Email: '',
@@ -44,9 +44,9 @@ const Signup = () => {
   };
 
   const handleSubmit = async (values: any) => {
-    setAvailabe(false);
+    setAvailable(false);
     await signUserUp(values);
-    setAvailabe(true);
+    setAvailable(true);
   };
 
   return (

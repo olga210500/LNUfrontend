@@ -1,18 +1,21 @@
 import React, {useState} from "react";
-import {Form, Input} from 'antd';
+import {Checkbox, Form, Input} from 'antd';
 import Navibar from "../../components/Navibar";
 import "../../styles/style.css";
 import jwt from 'jwt-decode';
-import { connect } from "react-redux";
-import { fetchUser} from "../../actions/userActions";
+import {connect} from "react-redux";
+import {fetchUser} from "../../actions/userActions";
 import SubmitButton from "../../components/submitButton";
 import {emptyInput, minLength} from "../../components/Notifications/Messages";
 import {checkEmail} from "../Signup/verification";
 import AuthStore from "../../stores/AuthStore";
 
-let user: any;
+let user;
+type Props={
+  fetchUser: (userInfo: any)=>void
+}
 
-const Signin = (fetchUser: any) => {
+const Signin = (props: Props) => {
   const [form] = Form.useForm();
   const [available, setAvailabe] = useState(true);
 
@@ -35,7 +38,7 @@ const Signin = (fetchUser: any) => {
 
   const handleSubmit = (values: any) => {
     setAvailabe(false);
-    fetchUser(values);
+    props.fetchUser(values);
     const token = AuthStore.getToken() as string;
     user = jwt(token);
     setAvailabe(true);
@@ -63,6 +66,11 @@ const Signin = (fetchUser: any) => {
                     <Form.Item name="Password" className="mb-3" rules={validationSchema.Password}>
                       <Input.Password visibilityToggle={true} className="form-control" placeholder="Пароль" />
                     </Form.Item>
+                <div className="rememberMeContainer">
+                  <Form.Item name="RememberMe" valuePropName="checked">
+                    <Checkbox className="RememberMe">Запам`ятати мене</Checkbox>
+                  </Form.Item>
+                </div>
                 <Form.Item>
                   <SubmitButton title="Увійти" loading={!available}/>
                 </Form.Item>
@@ -75,4 +83,4 @@ const Signin = (fetchUser: any) => {
   );
 };
 
-export default connect(null, { fetchUser })(Signin);
+export default connect(null, {fetchUser})(Signin);
