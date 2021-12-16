@@ -3,7 +3,8 @@ import DocumentApp from "../ApplicationPage/GeneratePDF/ApplicationDoc"
 
 const ApplicationInitialState={
   "userId": "",
-  "date": "",
+  "date": new Date(),
+  "status": 0,
   "fullName": "",
   "fullTimePosition": "",
   "partTimePosition": "",
@@ -13,8 +14,8 @@ const ApplicationInitialState={
   "city": "",
   "country": "",
   "institution": "",
-  "startDate": "",
-  "endDate": "",
+  "startDate":'',
+  "endDate": '',
   "route": "",
   "transport": "",
   "expensesPayment": "",

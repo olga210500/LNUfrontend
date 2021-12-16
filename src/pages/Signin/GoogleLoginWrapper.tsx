@@ -6,7 +6,7 @@ import { GoogleLogin } from 'react-google-login';
 
 const GoogleLoginWrapper = (props: any) => {
     return (
-        <div className="text-center">
+    <div className="text-center">
         <GoogleLogin
             clientId={props.googleId}
             render={(renderProps: any) => (
@@ -14,7 +14,7 @@ const GoogleLoginWrapper = (props: any) => {
                     <p id="imgSpanGoogle">
                         <img
                             alt="Google icon"
-                            className="socialImg"
+                            className="socialImg p-1"
                             src={googleImg}
                         />
                     </p>
