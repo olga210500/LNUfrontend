@@ -18,7 +18,7 @@ const Home = ({ userReducer }) => {
         >
           <div className="row justify-content-center">
             <div className="col-xl-8">
-              <h2>Welcome to LNUbiz</h2>
+              <h2>Вітаємо в системі LNUbiz</h2>
               <p>
                 Одним із важливих завдань при направленні у відрядження
                 працівників є правильне документальне оформлення. Адже бувають

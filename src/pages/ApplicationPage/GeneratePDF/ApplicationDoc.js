@@ -83,16 +83,13 @@ const DocumentApp = (data) => {
           <p>
             {"      "}Прошу відрятити мене{" "}
             {retentionType(arrData[0].retentionType)} у {arrData[0].institution}{" "}
-            <br />
             {"  "}з метою {arrData[0].purpose} терміном на{" "}
             {calculateDate(arrData[0].startDate, arrData[0].endDate)} з{" "}
             {new Date(arrData[0].startDate).toLocaleDateString()} по{" "}
             {new Date(arrData[0].endDate).toLocaleDateString()}.
           </p>
           <p>
-            {" "}
-            {"     "}
-            {arrData[0].expensesPayment}
+            {"     "}{arrData[0].expensesPayment}
           </p>
           <p>
             {"  "}Транспорт: {arrData[0].transport}.<br />

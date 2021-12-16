@@ -6,7 +6,6 @@
   position: fixed;
   top: 0;
   width: 100%;
-  
 }
 #header.header-transparent {
   background: none;
@@ -163,12 +162,12 @@ a:hover,
   width: 100% !important;
 }
 
-.ant-input-password-icon{
+.ant-input-password-icon {
   position: absolute;
   margin: 15px 0 0 -20px;
 }
 
-.ant-input-password input{
+.ant-input-password input {
   width: 100% !important;
 }
 
@@ -183,7 +182,8 @@ a:hover,
   text-align: left;
 }
 
-.ant-form-item-explain, .ant-form-item-extra {
+.ant-form-item-explain,
+.ant-form-item-extra {
   position: absolute;
   margin: -13px 0 0 5px;
   clear: both;
@@ -194,10 +194,6 @@ a:hover,
   transition: color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-.contact .php-email-form input:focus,
-.contact .php-email-form textarea:focus {
-  /*background-color: #dfe7f1;*/
-}
 .contact .php-email-form input {
   padding: 10px 15px;
 }
@@ -309,15 +305,14 @@ input[type="radio"] {
   font-weight: 400;
   font-size: 26px;
 }
-.aboutUs{
+.aboutUs {
   margin-top: 20vh;
 }
-.img-fluid{
+.img-fluid {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
-
 }
 /* .about ul {
   list-style: none;
@@ -368,13 +363,11 @@ input[type="radio"] {
   margin-bottom: 10px;
 }
 
-
 .skills .progress-bar {
   width: 1px;
   text-align: center;
   font-size: 14px;
   color: white;
- 
 }
 .section-bg {
   background-color: #f3f8fa;
@@ -407,160 +400,156 @@ input[type="radio"] {
   display: block;
   width: 40px;
   height: 3px;
-  background: #68A4C4;
+  background: #68a4c4;
   bottom: 0;
   left: calc(50% - 20px);
 }
 .section-title p {
   margin-bottom: 0;
 }
-.table{
+.table {
   margin-top: 8vh;
 }
 
-.forgot{
+.forgot {
   /*text-align: center;*/
   display: flex;
   align-items: center;
   justify-content: right;
   font-size: 16px;
   color: #6f7a85;
-  opacity: .95;
+  opacity: 0.95;
   cursor: pointer;
   /*font-family: "SourceSansPro";*/
   /*margin-top: -10px;*/
   /*margin-left:200px;*/
 }
 
-.forgot:hover{
+.forgot:hover {
   text-decoration: underline;
 }
 
-.rememberMeContainer{
+.rememberMeContainer {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.socialButton{
+.socialButton {
   color: rgb(255, 255, 255) !important;
-  outline: none!important;
+  outline: none !important;
   border: 0 !important;
   border-radius: 4px !important;
 }
 
-.socialImg{
+.socialImg {
   height: 26px;
   width: auto;
   margin-left: -3px;
   display: block;
 }
 
-#googleBtn{
+#googleBtn {
   background-color: rgb(222, 78, 59);
   padding-bottom: 2px;
 }
 
-#googleBtn p{
+#googleBtn p {
   display: inline-block;
   margin: 0;
 }
 
-#googleBtn:hover{
+#googleBtn:hover {
   background-color: rgba(222, 78, 59, 0.85);
 }
 
-#imgSpanGoogle{
+#imgSpanGoogle {
   padding-right: 5px;
-  border-right: 1px solid #BB3F30;
+  border-right: 1px solid #bb3f30;
 }
 
-.btnText{
+.btnText {
   margin-left: 4px;
   font-size: small;
 }
 
-.rememberMe span{
-  font-size: 14px;
+.RememberMe span {
+  font-size: 16px;
   padding: 1px;
 }
- 
 
-.generate{
-  color:black;
+.generate {
+  color: black;
   font-size: medium;
   margin: 0;
   padding: 0;
 }
 
-.userPage{
-  margin-top: 15vh;
-  height: 100px;
-  width: 200px;
-
-
-
+.userPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25vh;
+  flex-direction: column;
+  /* 
+  background-color: #1e4356; */
 }
-
 
 .pageBody {
   margin: 2vh;
-  background: rgb(204,204,204); 
+  background: rgb(204, 204, 204);
 }
-.document{
+.document {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  width:21cm ;
-  height:29.7cm;
-  
+  width: 21cm;
+  height: 29.7cm;
 }
-.pageBody p{
-  font-family: 'Times New Roman';
+.pageBody p {
+  font-family: "Times New Roman";
   font-size: 14px;
 }
-.space{
+.space {
   flex-grow: 5;
 }
-.appHead_part{
-display: flex;
+.appHead_part {
+  display: flex;
   right: 0;
-/* background-color: #666; */
+  /* background-color: #666; */
 }
-.appHead{ 
-   flex-grow: 0.3;
+.appHead {
+  flex-grow: 0.3;
 
   /* background-color: #68a4c4; */
 
   text-align: left;
   padding-right: 16px;
- 
-  /* justify-content: center; */
-  
 
+  /* justify-content: center; */
 }
-.mainText{
+.mainText {
   text-align: center;
-  padding:0 15px;
-  width:20cm ;
- 
+  padding: 0 15px;
+  width: 20cm;
+  word-wrap: break-word;
 }
-.mainText p{
+.mainText p {
   text-align: left;
-  white-space: pre;
-  
+  word-wrap: break-word;
 }
-#buttonGenerate{
+#buttonGenerate {
   padding-bottom: 16px;
 }
- .signDate p{
-  display:inline-block;
+.signDate p {
+  display: inline-block;
   flex-direction: row;
   padding-top: 100px;
   padding-left: 21px;
-  
- 
 }
-#sign_{
+#sign_ {
   margin-left: 60%;
+}
+.createApp {
+  color: #1e4356;
 }

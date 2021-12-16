@@ -4,10 +4,27 @@ import Api from '../api/api';
 import config from '../config';
 
 
+
   export const sendApplication =async (appForm)=> {
-    const response = await Api.post('BusinessTripRequest', appForm)
-        .then((response) =>{return response})
-        return response;
+    let jwt = AuthStore.getToken();
+    let decodedJwt = jwt_decode(jwt);
+    appForm.retentionType=parseInt(appForm.retentionType,10)
+    appForm.isAbroadTrip=Boolean(appForm.isAbroadTrip)
+    appForm.userId=`${decodedJwt.nameid}`
+    console.log(appForm)
+    return await Api.post('BusinessTripRequest', appForm)
+        .then((response) =>{
+          if(response.status<400){
+              alert("Вашу заявку відправлено!")
+          }
+        return response})
+        
+        .catch(error=>{
+          if(error.response.status === 400){
+            alert('Введені некоректні дані!')
+          }
+        })
+       
       }
 
  
@@ -17,5 +34,4 @@ import config from '../config';
     return await Api.get(`BusinessTripRequest/${requestId}`)
     .then((response)=>{return response})
   }
-
 

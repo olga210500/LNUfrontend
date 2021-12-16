@@ -4,18 +4,18 @@ import { useState } from "react";
 import InputField from "../components/InputField";
 import fieldsForInput from "../variblesForApplication/fieldsForInput";
 import SubmitButton from "../components/submitButton";
-import  { withInputFields,radioFields, radioFileds } from "../variblesForApplication/radioFields";
+import {
+  withInputFields,
+  radioFields,
+  radioFileds,
+} from "../variblesForApplication/radioFields";
 import AuthStore from "../stores/AuthStore";
 // import sendApplication  from "../actions/applicationAtcion.js";
-import jwt_decode from "jwt-decode";
-
 
 import InitialStates from "./InitialStates.js/InitialStates";
 import { sendApplication } from "../actions/applicationAtcion";
 
 const Application = () => {
-  let jwt = AuthStore.getToken();
-  let decodedJwt = jwt_decode(jwt);
   const [state, setState] = useState(InitialStates.ApplicationInitialState);
 
   function handleOnChange(evt) {
@@ -26,23 +26,10 @@ const Application = () => {
       [evt.target.name]: value,
     });
   }
- 
-  const onSubmit =async (e) => {   
-   
-    e.preventDefault(); 
-    state.retentionType=parseInt(state.retentionType,10)
-    state.isAbroadTrip=Boolean(state.isAbroadTrip)
-    state.date=new Date()
-    state.userId=`${decodedJwt.nameid}`
-    // changeState()
-    // setState({retentionType:parseInt(state.retentionType,10)})
-    // // setState(state.isAbroadTrip=Boolean(state.isAbroadTrip))
+
+  const onSubmit = (e) => {
     console.log(state);
-    sendApplication(state)
-    // alert("Вашу заявку відправлено.");
-   
-    
-   
+    sendApplication(state);
   };
   return (
     <>
@@ -56,7 +43,10 @@ const Application = () => {
             <form id="formApp" onSubmit={onSubmit}>
               {fieldsForInput.map(
                 ({ title, type, name, id, placeholder, required }, i) => (
-                  <div key={i}  className="col-md-5 mb-3 php-email-form columnApp">
+                  <div
+                    key={i}
+                    className="col-md-5 mb-3 php-email-form columnApp"
+                  >
                     <h6>{title}</h6>
                     <InputField
                       key={i}
@@ -72,17 +62,21 @@ const Application = () => {
                 )
               )}
               {radioFileds.map(({ name, title, options, type }, i) => (
-                <div key={i} className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp">
+                <div
+                  key={i}
+                  className="col-md-5 php-email-form mt-3 mt-md-0 mb-3 columnApp"
+                >
                   <h6>{title}</h6>
                   <div onChange={handleOnChange} key={i}>
                     {options.map(({ label, value }, i) => (
-                      <div key={i}  className="form-check">
+                      <div key={i} className="form-check">
                         <div className="header_6">
                           <input
                             type={type}
                             name={name}
                             value={value}
                             key={i}
+                            required
                           />
                           <label
                             className="form-check-label px-2 mt-2"

@@ -17,33 +17,17 @@ const printDocument = () => {
   });
 };
 
-
-
-
 const GeneratePdf = (props) => {
-
-
-
-
-
-
-
-
-  // console.log();
-  // console.log(currentApplicatin)
-
-
-
   return (
     <>
       <div id="divToPrint" className="mt5">
         <div className="">
-          <DocumentApp data={props.location.propsSearch}/>
+          <DocumentApp data={props.location.propsSearch} />
         </div>
       </div>
-      <div className="text-center" id='buttonGenerate'>
-        <button  onClick={printDocument} type="submit" className="rounded">
-          Generate PDF
+      <div className="text-center" id="buttonGenerate">
+        <button onClick={printDocument} type="submit" className="rounded">
+          Створити PDF
         </button>
       </div>
     </>
