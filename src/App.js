@@ -6,7 +6,7 @@ import About from "./pages/About/About";
 import { connect } from "react-redux";
 import Signin from "./pages/Signin/Signin.tsx";
 import Application from "./pages/Application";
-import Signup from "./pages/Signup/Signup.js";
+import Signup from "./pages/Signup/Signup.tsx";
 import InformationPage from "./pages/Signup/informationPage";
 import InformationLoggedIn from "./pages/errors/loggedInError";
 import GeneralPage from "./pages/UserPage/UserGeneral";
