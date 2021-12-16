@@ -4,7 +4,7 @@ import DocumentApp from "../ApplicationPage/GeneratePDF/ApplicationDoc"
 const ApplicationInitialState={
   "userId": "",
   "date": new Date(),
-  "status": 0,
+  "status": 2,
   "fullName": "",
   "fullTimePosition": "",
   "partTimePosition": "",
@@ -37,12 +37,7 @@ const UsersTableColumn= [
     width: 170,
     sort: "disabled",
   },
-  {
-    label: "По батькові",
-    field: "fatherName",
-    width: 200,
-    sort: "disabled",
-  },
+
   {
     label: "Телефон",
     field: "phoneNumber",
@@ -56,8 +51,8 @@ const UsersTableColumn= [
   },
 
   {
-    label: "Ім'я користувача",
-    field: "userName",
+    label: "Дії",
+    field: "actions",
     width: 150,
   },
 ]
@@ -83,7 +78,7 @@ const AdminApplicationColumns=[ {
   sort: "disabled",
 },
 {
-  label: "Згенерувати заявку",
+  label: "Дії",
   width: 150,
   sort: "disabled",
   field:'generateApp'

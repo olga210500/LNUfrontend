@@ -21,7 +21,6 @@ const UserPage = () => {
 
   let jwt = AuthStore.getToken();
   let decodedJwt = jwt_decode(jwt);
-  console.log(decodedJwt);
   return (
     <>
       <Navibar />

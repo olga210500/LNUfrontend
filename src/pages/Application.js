@@ -4,14 +4,13 @@ import { useState } from "react";
 import InputField from "../components/InputField";
 import fieldsForInput from "../variblesForApplication/fieldsForInput";
 import SubmitButton from "../components/submitButton";
+import AuthStore from "../stores/AuthStore";
+import jwt_decode from "jwt-decode";
 import {
   withInputFields,
   radioFields,
   radioFileds,
 } from "../variblesForApplication/radioFields";
-import AuthStore from "../stores/AuthStore";
-// import sendApplication  from "../actions/applicationAtcion.js";
-
 import InitialStates from "./InitialStates.js/InitialStates";
 import { sendApplication } from "../actions/applicationAtcion";
 
@@ -28,6 +27,12 @@ const Application = () => {
   }
 
   const onSubmit = (e) => {
+    let jwt = AuthStore.getToken();
+    let decodedJwt = jwt_decode(jwt);
+    state.retentionType = parseInt(state.retentionType, 10);
+    state.isAbroadTrip = Boolean(state.isAbroadTrip);
+    state.userId = `${decodedJwt.nameid}`;
+    e.preventDefault();
     console.log(state);
     sendApplication(state);
   };

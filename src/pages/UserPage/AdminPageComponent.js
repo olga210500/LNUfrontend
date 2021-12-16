@@ -23,6 +23,7 @@ const AdminPage = () => {
     <>
       <Navibar />
       <div className="table">
+        {/* {datatable.rows.action='lalal'} */}
         <Container>
           <MDBDataTableV5
             hover
