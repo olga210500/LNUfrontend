@@ -4,6 +4,8 @@ import jwt_decode from "jwt-decode";
 import store from "../store";
 import config from "../config";
 import notificationLogic from "../components/Notifications/Notification";
+import jwt from "jwt-decode";
+import userApi from "../api/userApi";
 
 const setUser = (payload) => ({ type: '', payload });
 const logUserOut = () => ({ type: "LOG_OUT" });
@@ -14,8 +16,9 @@ export const fetchUser = (userInfo) => async (dispatch) => {
       .then((response) => {
         if (response.data.token !== null) {
           AuthStore.setToken(response.data.token);
-          dispatch(setUser(jwt_decode(response.data.token)))
-          window.location =`${config.Front_URL}/userPage`;
+            dispatch(setUser(jwt_decode(response.data.token)))
+            const user = jwt(response.data.token);
+            window.location =`${config.Front_URL}/userPage`;
         }
       }).catch((error) => {
           if (error.response.status === 400) {
@@ -68,7 +71,7 @@ export const sendGoogleToken = (token) => async (dispatch) => {
             if (response.data.token !== null) {
                 AuthStore.setToken(response.data.token);
                 dispatch(setUser(jwt_decode(response.data.token)))
-                window.location =`${config.Front_URL}/userPage`;
+                window.location =`${config.Front_URL}/userPage}`;
             }
         })
         .catch((error) => {

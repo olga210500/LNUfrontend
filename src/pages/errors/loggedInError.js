@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../../styles/style.css";
+import userApi from "../../api/userApi";
 const InformationLoggedIn = () => (
   <section
     className="contact"
@@ -14,7 +15,7 @@ const InformationLoggedIn = () => (
             <h3> Ви увійшли в систему!</h3>
             <p className="parSize">
               Авторизація пройшла успішно. Перейдіть на сторінку{" "}
-              <Link id="linkContact" to="/userPage">
+              <Link id="linkContact" to={`/userPage`}>
                 користувача
               </Link>
               .

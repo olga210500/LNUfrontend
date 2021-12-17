@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "../styles/style.css";
 import { connect } from "react-redux";
 import Logout from "./Logout";
+import userApi from "../api/userApi";
 
 const params = [
   {
@@ -31,7 +32,7 @@ const loggedInParams=[
   },
 
   {
-    to: "/userPage",
+    to: '',//`/userPage/${userApi.getActiveUserId()}`,
     name:'Моя сторінка'
   },
 
