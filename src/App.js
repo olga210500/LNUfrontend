@@ -13,9 +13,8 @@ import GeneralPage from "./pages/UserPage/UserGeneral";
 import GeneratePdf from "./pages/ApplicationPage/GeneratePDF/GeneratePdf";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
-
 import UsersApplicationPage from "./pages/ApplicationPage/AdminApplications";
-
+import ChangeStatus from "./pages/ApplicationPage/ChangeApplicationStatus";
 
 const App = ({ userReducer }) => {
   const fields = [
@@ -27,7 +26,6 @@ const App = ({ userReducer }) => {
       path: "/contact",
       component: Contact,
     },
-
   ];
   const noSignedIn = [
     {
@@ -56,8 +54,7 @@ const App = ({ userReducer }) => {
     },
   ];
   const signedInPages = [
-    { path: "/signin", 
-    component: InformationLoggedIn },
+    { path: "/signin", component: InformationLoggedIn },
     {
       path: "/application",
       component: Application,
@@ -67,13 +64,17 @@ const App = ({ userReducer }) => {
       component: GeneralPage,
     },
     {
-      path:'/allApplications',
-      component:UsersApplicationPage
+      path: "/allApplications",
+      component: UsersApplicationPage,
     },
     {
       path: `/generatePdf`,
       component: GeneratePdf,
     },
+    {
+      path:'/editAppStatus',
+      component:ChangeStatus
+    }
   ];
 
   return (
@@ -82,18 +83,17 @@ const App = ({ userReducer }) => {
         <Switch>
           <Route exact path="/" component={Home} />
 
-          {fields.map(({ path, component },i) => (
+          {fields.map(({ path, component }, i) => (
             <Route key={i} path={path} component={component} />
           ))}
 
           {!userReducer.loggedIn
-            ? noSignedIn.map(({ path, component },i) => (
+            ? noSignedIn.map(({ path, component }, i) => (
                 <Route key={i} path={path} component={component} />
               ))
-            : signedInPages.map(({ path, component },i) => (
+            : signedInPages.map(({ path, component }, i) => (
                 <Route key={i} path={path} component={component} />
               ))}
-
         </Switch>
       </BrowserRouter>
     </>
