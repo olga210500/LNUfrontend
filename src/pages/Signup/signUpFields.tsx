@@ -1,6 +1,6 @@
 export type signUpField = {
     type: "text" | "email" | "password";
-    name: "Name" | "SurName" | "Email" | "Password" | "ConfirmPassword";
+    name: "firstName" | "lastName" | "email" | "password" | "ConfirmPassword";
     id: "name" | "surname" | "email" | "password" | "confirmPassword";
     placeholder: string;
     required: 'required';
@@ -9,14 +9,14 @@ export type signUpField = {
 export const  signUpFields: signUpField[] = [
     {
       type: "text",
-      name: "Name",
+      name: "firstName",
       id: "name",
       placeholder: "Ім'я",
       required:'required'
     },
     {
       type: "text",
-      name: "SurName",
+      name: "lastName",
       id: "surname",
       placeholder: "Прізвище",
       required:'required'
@@ -24,7 +24,7 @@ export const  signUpFields: signUpField[] = [
 
     {
       type: "email",
-      name: "Email",
+      name: "email",
       id: "email",
       placeholder: "Електронна пошта",
       required:'required'
@@ -32,7 +32,7 @@ export const  signUpFields: signUpField[] = [
 
     {
       type: "password",
-      name: "Password",
+      name: "password",
       id: "password",
       placeholder: "Пароль",
       required:'required'

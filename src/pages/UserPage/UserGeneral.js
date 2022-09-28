@@ -8,13 +8,13 @@ const GeneralPage = ({ userReducer }) => {
   if (userReducer.loggedIn) {
     let jwt = AuthStore.getToken();
     let decodedJwt = jwt_decode(jwt);
+
     if (
       decodedJwt[
         "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
-      ] === "Admin"
+      ] !== "Admin"
     ) {
       return <AdminPage />;
-    
     }
 
     return <UserPage/>;

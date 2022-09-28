@@ -3,10 +3,11 @@ import { useState } from "react";
 import { changeStatus } from "../../actions/applicationAtcion";
 const ChangeStatus = (props) => {
   const [value, setValue] = useState(`${2}`);
+
   const handleSelect = (e) => {
-    console.log(e);
     setValue(e);
   };
+
   const printStatus = (statusId) => {
     switch (statusId) {
       case 0:
@@ -19,8 +20,7 @@ const ChangeStatus = (props) => {
   };
   const onChangeStatus = (e) => {
     e.preventDefault();
-    console.log(props.location.propsSearch, value);
-    changeStatus(props.location.propsSearch, Number(value));
+    changeStatus(props.location.propsSearch, value);
   };
   return (
     <section className="contact">
@@ -31,7 +31,6 @@ const ChangeStatus = (props) => {
             <h5>Поточний статус: {`${printStatus(Number(value))}`}</h5>
 
             <DropdownButton
-              alignCenter
               title="Статуси"
               id="dropdown-menu-align-right"
               onSelect={handleSelect}

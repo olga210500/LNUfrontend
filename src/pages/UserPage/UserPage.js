@@ -5,7 +5,6 @@ import "../../styles/style.css";
 import jwt_decode from "jwt-decode";
 import AuthStore from "../../stores/AuthStore";
 import { Link } from "react-router-dom";
-import SubmitButton from "../../components/submitButton";
 const UserPage = () => {
   const [userInfo, setuserInfo] = useState({
     email: "",
@@ -13,9 +12,10 @@ const UserPage = () => {
     lastName: "",
     phoneNumber: "",
   });
+
   useEffect(() => {
     userApi.getCurrent().then((res) => {
-      setuserInfo(res.data);
+      setuserInfo(res);
     });
   }, []);
 

@@ -4,15 +4,14 @@ import InitialStates from "../InitialStates.js/InitialStates";
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Navibar from "../../components/Navibar";
-import { getMyApplication } from "../../actions/userActions";
 import { Link } from "react-router-dom";
 import * as Icons from "react-bootstrap-icons";
 import { deleteAppFromTable } from "../../actions/applicationAtcion";
 import openNotificationWithIcon from "../../components/Notifications/Notification";
 import { successfulDeleteAction } from "../../components/Notifications/Messages";
-import { setuid } from "process";
 import jwt_decode from "jwt-decode";
 import AuthStore from "../../stores/AuthStore";
+
 
 const UsersApplicationPage = () => {
   const [datatable, setApplication] = useState({
@@ -23,13 +22,12 @@ const UsersApplicationPage = () => {
 
   useEffect(() => {
     getApplicationsTable().then((res) => {
-      setApplication({ ...datatable, rows: [res.data.requests].flat() });
+      setApplication({ ...datatable, rows: [...res.data.forms] });
     });
     setUpdate(false);
   }, [update]);
   const onDelete = (requestId) => {
     deleteAppFromTable(requestId);
-    //window.location.reload('/allApplications');
     setUpdate(true);
     openNotificationWithIcon("success", successfulDeleteAction("Заявку"));
   };
@@ -49,11 +47,12 @@ const UsersApplicationPage = () => {
   return (
     <>
       <Navibar />
-      {datatable.rows.forEach((element) => {
+      {
+        datatable.rows.forEach((element) => {
         element.status = printStatus(element.status);
         decodedJwt[
           "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
-        ] === "Admin" ? (
+        ] !== "Admin" ? (
           (element.generateApp = (
             <div>
               <Link
@@ -104,7 +103,6 @@ const UsersApplicationPage = () => {
           </Link>
         );
       })}
-      {console.log(datatable.rows)}
       <div className="table">
         <Container>
           <MDBDataTableV5

@@ -31,7 +31,7 @@ const Application = () => {
     let decodedJwt = jwt_decode(jwt);
     state.retentionType = parseInt(state.retentionType, 10);
     state.isAbroadTrip = Boolean(state.isAbroadTrip);
-    state.userId = `${decodedJwt.nameid}`;
+    state.userId = `${decodedJwt.userId}`;
     e.preventDefault();
     console.log(state);
     sendApplication(state);

@@ -10,10 +10,9 @@ const getById = async (id: string | undefined) => {
 const getCurrent = async () => {
     let jwt = AuthStore.getToken() as string;
     let decodedJwt = jwt_decode(jwt) as any;
-    return await Api.get(`User/${decodedJwt.nameid}`)
+    return await Api.get(`/User/${decodedJwt.userId}`)
         .then((response) => {
-        console.log(response)
-        return response
+            return response
     });
 };
 
