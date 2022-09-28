@@ -17,22 +17,22 @@ type Props={
 
 const Signin = (props: Props) => {
   const [form] = Form.useForm();
-  const [googleId, setGoogleId] = useState("");
-  const [googleLoading, setGoogleLoading] = useState(true);
+  // const [googleId, setGoogleId] = useState("");
+  // const [googleLoading, setGoogleLoading] = useState(true);
   const [available, setAvailabe] = useState(true);
 
   const initialValues = {
-    Email: "",
-    Password: "",
-    RememberMe: true,
+    email: "",
+    password: "",
+    rememberMe: true,
   };
 
   const validationSchema = {
-    Email: [
+    email: [
       { required: true, message: emptyInput() },
       { validator: checkEmail },
     ],
-    Password: [
+    password: [
       { required: true, message: emptyInput() },
       { min: 8, message: minLength(8) },
     ]
@@ -44,22 +44,22 @@ const Signin = (props: Props) => {
     setAvailabe(true);
   };
 
-  const handleGoogleResponse = async (response: any) => {
-    await props.sendGoogleToken(response.tokenId);
-  }
+  // const handleGoogleResponse = async (response: any) => {
+  //   await props.sendGoogleToken(response.tokenId);
+  // }
 
-  const getId = async () => {
-    await getGoogleId().then(
-        (data) => {
-          setGoogleId(data.id);
-        }
-    ).catch(exc => { console.log(exc) });
-    setGoogleLoading(false);
-  }
+  // const getId = async () => {
+  //   await getGoogleId().then(
+  //       (data) => {
+  //         setGoogleId(data.id);
+  //       }
+  //   ).catch(exc => { console.log(exc) });
+  //   setGoogleLoading(false);
+  // }
 
-  useEffect(() => {
-    getId();
-  }, []);
+  // useEffect(() => {
+  //   getId();
+  // }, []);
 
   return (
       <>
@@ -76,14 +76,14 @@ const Signin = (props: Props) => {
               >
                 <h2> Увійти</h2>
                 <div className="row-md-2 form-group mt-3 mt-md-0 mb-3">
-                  <Form.Item name="Email" className="mb-3" rules={validationSchema.Email}>
+                  <Form.Item name="email" className="mb-3" rules={validationSchema.email}>
                     <Input className="form-control" placeholder="Електронна пошта" />
                   </Form.Item>
-                  <Form.Item name="Password" className="mb-3" rules={validationSchema.Password}>
+                  <Form.Item name="password" className="mb-3" rules={validationSchema.password}>
                     <Input.Password visibilityToggle={true} className="form-control" placeholder="Пароль" />
                   </Form.Item>
                   <div className="rememberMeContainer">
-                    <Form.Item name="RememberMe" valuePropName="checked">
+                    <Form.Item name="rememberMe" valuePropName="checked">
                       <Checkbox className="RememberMe">Запам`ятати мене</Checkbox>
                     </Form.Item>
                     <Link className="forgot" to="/forgotPassword">Забули пароль?</Link>
@@ -92,11 +92,11 @@ const Signin = (props: Props) => {
                     <Form.Item>
                       <SubmitButton title="Увійти" loading={!available}/>
                     </Form.Item>
-                  {googleLoading ? (
+                  {/*{googleLoading ? (
                       ''
                   ) : (
                       <GoogleLoginWrapper googleId={googleId} handleGoogleResponse={handleGoogleResponse}/>
-                  )}
+                  )}*/}
                   </div>
                 </div>
               </Form>

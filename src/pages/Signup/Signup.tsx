@@ -16,27 +16,27 @@ const Signup = () => {
   const [available, setAvailable] = useState(true);
 
   const initialValues = {
-    Email: '',
-    Name: '',
-    SurName: '',
-    Password: '',
+    email: '',
+    firstName: '',
+    lastName: '',
+    password: '',
     ConfirmPassword: '',
   };
 
   const validationSchema = {
-    Email: [
+    email: [
       { required: true, message: emptyInput() },
       { validator: checkEmail }
     ],
-    Password: [
+    password: [
       { required: true, message: emptyInput() },
       { validator: checkPassword }
     ],
-    Name: [
+    firstName: [
       { required: true, message: emptyInput() },
       { validator: checkNameSurName }
     ],
-    SurName: [
+    lastName: [
       { required: true, message: emptyInput() },
       { validator: checkNameSurName }
     ],
@@ -84,16 +84,16 @@ const Signup = () => {
             >
               <h2> Реєстрація</h2>
               <div className="row-md-2 form-group mb-3">
-                <Form.Item name="Email" className="mb-3" rules={validationSchema.Email}>
+                <Form.Item name="email" className="mb-3" rules={validationSchema.email}>
                   <Input className="form-control" placeholder="Електронна пошта" />
                 </Form.Item>
-                <Form.Item name="Password" className="mb-3" rules={validationSchema.Password}>
+                <Form.Item name="password" className="mb-3" rules={validationSchema.password}>
                   <Input.Password visibilityToggle={true} className="form-control" placeholder="Пароль" />
                 </Form.Item>
                 <Form.Item
                     name="ConfirmPassword"
                     className="mb-3"
-                    dependencies={['Password']}
+                    dependencies={['password']}
                     rules={[
                       {
                         required: true,
@@ -101,7 +101,7 @@ const Signup = () => {
                       },
                       ({ getFieldValue }) => ({
                         validator(rule, value) {
-                          if (!value || getFieldValue('Password') === value) {
+                          if (!value || getFieldValue('password') === value) {
                             return Promise.resolve();
                           }
                           return Promise.reject(new Error('Паролі не співпадають'));
@@ -111,10 +111,10 @@ const Signup = () => {
                 >
                   <Input.Password visibilityToggle={true} className="form-control" placeholder="Підтвердити пароль" />
                 </Form.Item>
-                <Form.Item name="Name" className="mb-3" rules={validationSchema.Name}>
+                <Form.Item name="firstName" className="mb-3" rules={validationSchema.firstName}>
                   <Input className="form-control" placeholder="Ім'я" />
                 </Form.Item>
-                <Form.Item name="SurName" className="mb-3" rules={validationSchema.SurName}>
+                <Form.Item name="lastName" className="mb-3" rules={validationSchema.lastName}>
                   <Input className="form-control" placeholder="Прізвище" />
                 </Form.Item>
               </div>
@@ -122,11 +122,11 @@ const Signup = () => {
                 <Form.Item>
                   <SubmitButton title="Зареєструватись" loading={!available} />
                 </Form.Item>
-                {googleLoading ? (
-                    ''
-                ) : (
-                    <GoogleLoginWrapper signUp={true} googleId={googleId} handleGoogleResponse={handleGoogleResponse}/>
-                )}
+                {/*{googleLoading ? (*/}
+                {/*    ''*/}
+                {/*) : (*/}
+                {/*    <GoogleLoginWrapper signUp={true} googleId={googleId} handleGoogleResponse={handleGoogleResponse}/>*/}
+                {/*)}*/}
               </div>
             </Form>
           </div>

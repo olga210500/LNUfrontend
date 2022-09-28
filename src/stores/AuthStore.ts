@@ -1,3 +1,6 @@
+import axios from "axios";
+import config from "../config";
+
 export default class AuthStore {
     static STORAGE_KEY: string = "token";
 
@@ -11,5 +14,11 @@ export default class AuthStore {
 
     static removeToken(): void {
         window.localStorage.removeItem(AuthStore.STORAGE_KEY);
+    }
+
+    static async checkAuth(): Promise<any> {
+        const response = await axios.get(`${config.BASE_URL}/Auth/refresh`);
+        const token = response.data.tokens;
+        AuthStore.setToken(JSON.stringify(token));
     }
 }

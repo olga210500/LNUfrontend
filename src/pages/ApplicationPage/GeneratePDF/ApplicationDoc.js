@@ -6,21 +6,22 @@ const DocumentApp = (data) => {
     currentApp: {},
   });
 
+
   useEffect(() => {
-    getCurrentApplication(Object.values(data)).then((res) => {
+    getCurrentApplication(data.data.propsSearch).then((res) => {
       setcurrentApplication({
         ...currentApplicatin,
-        currentApp: res.data.request,
+        currentApp: res.data,
       });
-      // console.log(res)
     });
   }, []);
 
-  // console.log('alalal',  data)
-  // const [datas, setdata] = useState({currentApp:{}})
-  // setdata({ ...datas, currentApp:data.request });
+
   const arrData = Object.values(currentApplicatin);
-  console.log(Object.values(currentApplicatin)[0].city);
+
+
+
+
   const retentionType = (type) => {
     if (type === 0) {
       return "зі збереженням середньої зарплати за основним місце праці";
@@ -49,7 +50,6 @@ const DocumentApp = (data) => {
     }
     return;
   };
-
   return (
     <>
       <div className="pageBody"></div>
@@ -96,14 +96,14 @@ const DocumentApp = (data) => {
             {"  "}Маршрут руху: {arrData[0].route}.<br />
             {"  "}Підстава: {arrData[0].tripReason}.
           </p>
-        </div>  
+        </div>
         <div className="signDate">
         <p>Дата</p>
         <p id='sign_'>Підпис</p>
-        
+
       </div>
       </div>
-    
+
     </>
   );
 };
